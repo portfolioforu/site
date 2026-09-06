@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarifs & Formules — Portfolio For U</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo-container">
+        <svg class="logo-icon" viewBox="0 0 40 40" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#11141D"/>
+          <path d="M10 14L16 20L10 26" stroke="#FF2A4B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 26H28" stroke="#FF2A4B" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M22 14V20H28V14H22Z" fill="#FF2A4B" fill-opacity="0.2" stroke="#FF2A4B" stroke-width="1.5"/>
+        </svg>
+        <span class="logo-text">Portfolio<span class="accent-red">ForU</span></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="tarifs.html" class="active">Tarifs</a></li>
+        <li><a href="index.html#exemples">Démos</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Commander</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    
+    <section class="page-intro">
+      <span class="tag-label">TRANSPARENCE TOTALE</span>
+      <h1>Des tarifs simples, adaptés à tes besoins</h1>
+      <p class="intro-desc">Choisis entre la livraison rapide automatique ou un accompagnement sur-mesure avec révision avant tout paiement.</p>
+    </section>
+
+    <!-- Grille des tarifs -->
+    <section class="pricing-grid">
+      
+      <!-- Carte 1 -->
+      <div class="price-card">
+        <div class="card-header">
+          <span class="plan-type">EXPRESS</span>
+          <h2>Fichiers Seuls</h2>
+          <div class="price-box">
+            <span class="price">20€</span>
+            <span class="price-sub">Paiement unique</span>
+          </div>
+        </div>
+        <p class="plan-desc">Idéal si tu souhaites gérer toi-même l'hébergement et le déploiement sur ton propre GitHub.</p>
+        <ul class="features-list">
+          <li>✓ Développement complet du site</li>
+          <li>✓ Code source nettoyé (.zip)</li>
+          <li>✓ Design ultra-responsive</li>
+          <li>✓ Formulaire de contact fonctionnel</li>
+          <li>✕ Déploiement GitHub Pages</li>
+          <li>✕ Accompagnement / Aperçu préalable</li>
+        </ul>
+        <a href="index.html#contact" class="btn-pricing btn-outline-pricing">Sélectionner →</a>
+      </div>
+
+      <!-- Carte 2 -->
+      <div class="price-card">
+        <div class="card-header">
+          <span class="plan-type">EXPRESS</span>
+          <h2>Express Clé en Main</h2>
+          <div class="price-box">
+            <span class="price">30€</span>
+            <span class="price-sub">Paiement unique</span>
+          </div>
+        </div>
+        <p class="plan-desc">Pour un site immédiatement en ligne sans toucher à la technique.</p>
+        <ul class="features-list">
+          <li>✓ Tout le contenu de la formule Fichiers</li>
+          <li>✓ Création &amp; Configuration du dépôt GitHub</li>
+          <li>✓ Configuration du domaine personnalisé</li>
+          <li>✓ Certificat SSL (HTTPS) activé</li>
+          <li>✓ Mise en ligne immédiate</li>
+          <li>✕ Validation avant paiement</li>
+        </ul>
+        <a href="index.html#contact" class="btn-pricing btn-outline-pricing">Sélectionner →</a>
+      </div>
+
+      <!-- Carte 3 (Mise en avant) -->
+      <div class="price-card featured-card">
+        <div class="featured-badge">POPULAIRE</div>
+        <div class="card-header">
+          <span class="plan-type red-text">SUR-MESURE</span>
+          <h2>Sur-Mesure Clé en Main</h2>
+          <div class="price-box">
+            <span class="price">55€</span>
+            <span class="price-sub">Paiement après validation</span>
+          </div>
+        </div>
+        <p class="plan-desc">Accompagnement complet. Tu ne payes que lorsque le premier aperçu te convient à 100 %.</p>
+        <ul class="features-list">
+          <li>✓ <strong>Premier aperçu sous 24/48h</strong></li>
+          <li>✓ <strong>Modifications &amp; retouches illimitées</strong></li>
+          <li>✓ Échanges directs par email/Discord</li>
+          <li>✓ Configuration complète GitHub &amp; Domaine</li>
+          <li>✓ Code source + Fichiers livrés</li>
+          <li>✓ <strong>0€ dépensé si la démo ne te plaît pas</strong></li>
+        </ul>
+        <a href="index.html#contact" class="btn-pricing btn-cyber-pricing">Lancer un projet sur-mesure →</a>
+      </div>
+
+    </section>
+
+    <!-- Tableau récapitulatif -->
+    <section class="comparison-section">
+      <h2>Comparatif rapide</h2>
+      <div class="table-wrapper">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Fonctionnalités</th>
+              <th>Express (20€ - 30€)</th>
+              <th>Sur-Mesure (40€ - 55€)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Code source fourni (.zip)</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Premier aperçu avant paiement</td>
+              <td>✕</td>
+              <td><strong>✓ (Sans engagement)</strong></td>
+            </tr>
+            <tr>
+              <td>Retouches &amp; Personnalisations</td>
+              <td>✕</td>
+              <td><strong>✓ Illimitées</strong></td>
+            </tr>
+            <tr>
+              <td>Configuration du domaine pro (.fr)</td>
+              <td>Sur option (+10€)</td>
+              <td><strong>✓ Inclus (Option Clé en main)</strong></td>
+            </tr>
+            <tr>
+              <td>Delai de livraison</td>
+              <td>Moins de 24h</td>
+              <td>24h à 48h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 — <span class="red-text">Portfolio For U</span> par Nathan Cattin</p>
+  </footer>
+
+</body>
+</html>
+
