@@ -4,20 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio For U — Portfolio sur-mesure pour étudiants tech</title>
-  <meta name="description" content="Portfolio web personnalisé développé de A à Z par Nathan Cattin pour étudiants tech et professionnels IT." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <header>
     <div class="header-container">
-      <a href="index.html" class="logo">Portfolio<span>ForU</span></a>
-      <nav>
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">&gt;_</div>
+        <div class="logo-text">Portfolio<span>ForU</span></div>
+      </a>
+
+      <nav class="nav-desktop">
         <a href="index.html" class="active">Accueil</a>
         <a href="tarifs.html">Tarifs</a>
         <a href="demos.html">Démos</a>
         <a href="commander.html" class="btn-primary">Commander</a>
       </nav>
+
+      <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+    </div>
+
+    <div class="nav-mobile" id="mobileNav">
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="demos.html">Démos</a>
+      <a href="commander.html" class="btn-primary" style="margin-top: 8px;">Commander</a>
     </div>
   </header>
 
@@ -25,31 +37,31 @@
     <span class="badge">● SÉCURISÉ &amp; SUR-MESURE</span>
     <h1>Un Portfolio Sur-Mesure Pour <span>Mettre En Avant</span> Ton Parcours</h1>
     <p>Conçu par Nathan Cattin. Tu me donnes tes infos, ton parcours et tes projets, et je développe ton site personnalisé de A à Z.</p>
-    <div style="display: flex; gap: 12px; justify-content: center;">
-      <a href="commander.html" class="btn-primary" style="padding: 12px 24px;">Discuter de ton projet →</a>
-      <a href="demos.html" class="btn-secondary" style="padding: 12px 24px;">Voir les démos</a>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="commander.html" class="btn-primary" style="padding: 14px 28px;">Discuter de ton projet →</a>
+      <a href="demos.html" class="btn-secondary" style="padding: 14px 28px;">Voir les démos</a>
     </div>
   </section>
 
   <main>
-    <p style="font-family: monospace; color: var(--primary); font-size: 0.825rem;">// COMMENT ÇA MARCHE</p>
-    <h2 style="font-size: 1.75rem; margin-top: 4px;">Trois étapes, zéro prise de risque</h2>
+    <p style="font-family: monospace; color: var(--primary); font-size: 0.85rem;">// COMMENT ÇA MARCHE</p>
+    <h2 style="font-size: 2rem; margin-top: 4px;">Trois étapes, zéro prise de risque</h2>
 
     <div class="grid-3">
       <div class="surface-card">
-        <span style="font-family: monospace; color: var(--primary);">01</span>
-        <h3 style="margin: 8px 0;">Tu partages ton parcours</h3>
-        <p style="color: var(--text-muted); font-size: 0.875rem;">Bio, diplômes, expériences, projets et préférences visuelles via un formulaire guidé.</p>
+        <span style="font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: bold;">01</span>
+        <h3 style="margin: 12px 0 8px;">Tu partages ton parcours</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Bio, diplômes, expériences, projets et préférences visuelles via un formulaire guidé.</p>
       </div>
       <div class="surface-card">
-        <span style="font-family: monospace; color: var(--primary);">02</span>
-        <h3 style="margin: 8px 0;">Je développe ton site</h3>
-        <p style="color: var(--text-muted); font-size: 0.875rem;">Code propre, responsive et rapide, pensé pour les recruteurs du secteur tech.</p>
+        <span style="font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: bold;">02</span>
+        <h3 style="margin: 12px 0 8px;">Je développe ton site</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Code propre, responsive et rapide, pensé pour les recruteurs du secteur tech.</p>
       </div>
       <div class="surface-card">
-        <span style="font-family: monospace; color: var(--primary);">03</span>
-        <h3 style="margin: 8px 0;">Tu valides, puis tu paies</h3>
-        <p style="color: var(--text-muted); font-size: 0.875rem;">Aperçu gratuit sous 24/48h, révisions illimitées avant toute mise en ligne.</p>
+        <span style="font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: bold;">03</span>
+        <h3 style="margin: 12px 0 8px;">Tu valides, puis tu paies</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Aperçu gratuit sous 24/48h, révisions illimitées avant toute mise en ligne.</p>
       </div>
     </div>
   </main>
@@ -67,5 +79,4 @@
 
 </body>
 </html>
-
 
