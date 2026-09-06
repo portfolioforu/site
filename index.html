@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  
 
   <div class="cyber-grid"></div>
 
@@ -18,7 +17,7 @@
     <nav>
       <div class="logo"><span class="accent-text">&gt;_</span> Portfolio<span class="red-text">ForU</span></div>
       <ul>
-        <li><a href="#projets">Exemple</a></li>
+        <li><a href="#exemples">Exemples &amp; Démos</a></li>
         <li><a href="#contact" class="btn-nav">Me contacter</a></li>
       </ul>
     </nav>
@@ -31,40 +30,69 @@
     <a href="#contact" class="btn-main btn-cyber">Discuter de ton projet <span class="arrow">→</span></a>
   </section>
 
-  <section id="projets" class="container">
-    <h2><span class="red-text">//</span> DÉMO &amp; EXEMPLE DE RÉALISATION</h2>
-    
-    <div class="browser-mockup">
-      <div class="browser-header">
-        <div class="dots">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-        </div>
-        <div class="browser-address">https://ncattin.github.io/my-portfolio/</div>
-      </div>
+  <!-- SECTION DÉMOS & EXEMPLES -->
+  <section id="exemples" class="container">
+    <h2><span class="red-text">//</span> EXEMPLES &amp; DÉMOS INTERACTIVES</h2>
+    <p class="subtitle">Découvre ce que je peux réaliser pour toi selon tes besoins et tes préférences de structure :</p>
+
+    <div class="demos-grid">
       
-      <div class="browser-content">
-        <div class="preview-card">
+      <!-- Démo 1 : Portfolio Personnel -->
+      <div class="browser-mockup">
+        <div class="browser-header">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="browser-address">ncattin.github.io/my-portfolio/</div>
+        </div>
+        
+        <div class="browser-content">
           <div class="preview-info">
+            <span class="badge-tag">Site Personnel</span>
             <h3>Mon Portfolio Personnel</h3>
-            <p>Découvre la structure avec présentation, compétences, missions et projets que je peux adapter pour toi.</p>
+            <p>Une structure fluide axée sur la présentation de mon identité, mes compétences et mes projets système &amp; réseau.</p>
             <a href="https://ncattin.github.io/my-portfolio/" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-              ⚡ Tester la démo interactive ↗
+              ⚡ Tester la démo ↗
             </a>
           </div>
         </div>
       </div>
+
+      <!-- Démo 2 : Démo Client Multi-Pages -->
+      <div class="browser-mockup highlight-mockup">
+        <div class="browser-header">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="browser-address">ncattin.github.io/demo-portfolio/</div>
+        </div>
+        
+        <div class="browser-content">
+          <div class="preview-info">
+            <span class="badge-tag red-badge">Modèle Multi-Pages</span>
+            <h3>Exemple Rendu Client (Testeur Dupuis)</h3>
+            <p>Un site complet découpé en plusieurs sous-pages dédiées (Accueil, Parcours, Compétences et Fiches Projets détaillées).</p>
+            <a href="https://ncattin.github.io/demo-portfolio/" target="_blank" rel="noopener noreferrer" class="btn-cyber">
+              🚀 Tester la démo Client ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- SECTION FORMULAIRE -->
   <section id="contact" class="container">
     <h2><span class="red-text">//</span> LANCER TON PROJET</h2>
     <p class="subtitle">Remplis ce formulaire détaillé. Je te recontacte directement par mail (<strong>hello.portfolioforu@outlook.com</strong>) pour caler les derniers détails.</p>
     
     <form action="https://formspree.io/f/xwlknvza" method="POST" enctype="multipart/form-data" id="contact-form" class="cyber-card">
       
-      <!-- Protection Anti-Spam & Redirection -->
       <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
 
       <!-- SECTION 1 : CONTACT & FORMULE -->
