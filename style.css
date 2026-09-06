@@ -29,6 +29,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Texture de fond cyber */
 .cyber-grid {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -52,6 +53,7 @@ body {
   padding: 40px 20px;
 }
 
+/* Header & Nav */
 header {
   background-color: rgba(17, 20, 29, 0.85);
   backdrop-filter: blur(10px);
@@ -94,6 +96,7 @@ nav a {
 
 nav a:hover { color: var(--red-main); }
 
+/* Buttons Cyber */
 .btn-cyber {
   background: linear-gradient(135deg, var(--red-main) 0%, var(--red-dark) 100%);
   color: #fff !important;
@@ -145,6 +148,7 @@ nav a:hover { color: var(--red-main); }
   box-shadow: 0 0 15px var(--red-glow);
 }
 
+/* Hero Section */
 .hero {
   text-align: center;
   padding: 80px 20px;
@@ -179,6 +183,7 @@ nav a:hover { color: var(--red-main); }
   margin: 0 auto 30px auto;
 }
 
+/* Titres de Section */
 h2 {
   font-family: var(--font-code);
   font-size: 1.3rem;
@@ -192,13 +197,49 @@ h2 {
   margin-bottom: 25px;
 }
 
+/* Grille des démos */
+.demos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .demos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.badge-tag {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: var(--bg-dark);
+  border: 1px solid var(--card-border);
+  padding: 3px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.red-badge {
+  color: var(--red-main);
+  border-color: rgba(255, 42, 75, 0.4);
+  background: rgba(255, 42, 75, 0.08);
+}
+
+.highlight-mockup {
+  border-color: rgba(255, 42, 75, 0.3);
+}
+
+/* Mockup Navigateur */
 .browser-mockup {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  margin-top: 20px;
   transition: border-color 0.3s;
 }
 
@@ -233,22 +274,23 @@ h2 {
 }
 
 .browser-content {
-  padding: 40px 20px;
+  padding: 30px 20px;
   background: linear-gradient(180deg, rgba(255,42,75,0.05) 0%, transparent 100%);
   text-align: center;
 }
 
 .preview-info h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
 }
 
 .preview-info p {
   color: var(--text-muted);
-  max-width: 500px;
+  font-size: 0.9rem;
   margin: 0 auto 20px auto;
 }
 
+/* Formulaire Cyber & Sections */
 .cyber-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -308,7 +350,6 @@ h2 {
   transition: all 0.2s;
 }
 
-/* Style spécifique pour le champ Fichier CV */
 .form-group input[type="file"] {
   padding: 8px;
   cursor: pointer;
@@ -339,6 +380,7 @@ h2 {
   font-size: 1rem;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 30px 20px;
