@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio For U - Création de Portfolio Sur-Mesure par Nathan Cattin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Portfolio For U</div>
+      <ul>
+        <li><a href="#projets">Exemple</a></li>
+        <li><a href="#contact" class="btn-nav">Me contacter</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Un <strong>portfolio sur-mesure</strong> pour mettre en avant tes projets</h1>
+    <p>Créé par Nathan Cattin. Tu me donnes tes infos, tes projets et tes idées, et je m'occupe de concevoir ton portfolio.</p>
+    <a href="#contact" class="btn-main">Discuter de ton projet</a>
+  </section>
+
+  <section id="projets" class="container">
+    <h2>Mon travail</h2>
+    <div class="portfolio-preview">
+      <p>Jette un œil au portfolio que j'ai réalisé pour moi-même pour voir le style et la qualité :</p>
+      <a href="https://ncattin.github.io/my-portfolio/" target="_blank" rel="noopener noreferrer" class="btn-secondary">Voir mon portfolio exemple ↗</a>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Créer ton portfolio</h2>
+    <p>Remplis ce formulaire pour m'expliquer ton besoin. On échangera ensuite directement ensemble par mail (<strong>hello.portfolioforu@outlook.com</strong>) pour caler tous les détails.</p>
+    
+    <!-- Formulaire relié à ton compte Formspree -->
+    <form action="https://formspree.io/f/xwlknvza" method="POST" id="contact-form">
+      
+      <!-- Anti-Spam (Honeypot) -->
+      <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
+      <div class="form-group">
+        <label for="name">Ton Nom / Prénom *</label>
+        <input type="text" id="name" name="name" placeholder="Ex: Alex Dupont" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Ton Adresse Email *</label>
+        <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="formula">Choisis ta formule *</label>
+        <select id="formula" name="formula" required>
+          <option value="fichiers">Option Fichiers seuls (Code source complet fourni en dossier .zip)</option>
+          <option value="cle-en-main">Option Clé en main (+20€ - Création + Mise en ligne sur ton GitHub)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="profile">Ton domaine / profil *</label>
+        <input type="text" id="profile" name="profile" placeholder="Ex: Étudiant BTS, Développeur Web, Designer..." required>
+      </div>
+
+      <div class="form-group">
+        <label for="skills">Tes compétences clés</label>
+        <input type="text" id="skills" name="skills" placeholder="Ex: HTML, CSS, Python, Réseaux, Figma...">
+      </div>
+
+      <div class="form-group">
+        <label for="projects">Les projets que tu veux inclure</label>
+        <textarea id="projects" name="projects" rows="4" placeholder="Décris brièvement 1 à 3 projets (titre, description, liens GitHub si tu en as)..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="links">Tes liens professionnels (LinkedIn, GitHub, CV...)</label>
+        <input type="text" id="links" name="links" placeholder="Ex: https://github.com/ton-pseudo">
+      </div>
+
+      <div class="form-group">
+        <label for="details">Remarques ou préférences graphiques</label>
+        <textarea id="details" name="details" rows="3" placeholder="Couleurs préférées, style souhaité, informations complémentaires..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-main">Envoyer ma demande</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 - Portfolio For U par Nathan Cattin (hello.portfolioforu@outlook.com)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
