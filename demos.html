@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Démos — Portfolio For U</title>
+  <meta name="description" content="Deux exemples de portfolios réalisés par Portfolio For U : un format épuré en une page, et un format complet à plusieurs pages." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,15 +12,16 @@
   <header>
     <div class="header-container">
       <a href="index.html" class="logo-group">
-        <div class="logo-icon">&gt;_</div>
+        <div class="logo-mark">P</div>
         <div class="logo-text">Portfolio<span>ForU</span></div>
       </a>
 
       <nav class="nav-desktop">
         <a href="index.html">Accueil</a>
+        <a href="apropos.html">À propos</a>
         <a href="tarifs.html">Tarifs</a>
         <a href="demos.html" class="active">Démos</a>
-        <a href="commander.html" class="btn-primary">Commander</a>
+        <a href="commander.html" class="btn btn-primary">Commander</a>
       </nav>
 
       <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
@@ -27,43 +29,122 @@
 
     <div class="nav-mobile" id="mobileNav">
       <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
       <a href="tarifs.html">Tarifs</a>
       <a href="demos.html">Démos</a>
-      <a href="commander.html" class="btn-primary" style="margin-top: 8px;">Commander</a>
+      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
     </div>
   </header>
 
   <main>
-    <div style="text-align: center; margin-bottom: 40px;">
-      <h1 style="font-size: 2.25rem;">Démos interactives</h1>
-      <p style="color: var(--text-muted); margin-top: 8px;">Clique et teste le rendu réel sur ton téléphone ou ordinateur.</p>
-    </div>
-
-    <div class="grid-2">
-      <div class="surface-card" style="display:flex; flex-direction:column; justify-content:space-between;">
-        <div>
-          <span style="font-family: monospace; font-size: 0.75rem; color: var(--primary);">// SINGLE-PAGE</span>
-          <h3 style="margin-top: 10px; font-size: 1.35rem;">Mon Portfolio Personnel</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Format fluide et épuré axé sur l'identité et les projets systèmes/réseaux.</p>
-        </div>
-        <a href="https://ncattin.github.io/my-portfolio/" target="_blank" class="btn-secondary" style="margin-top: 28px;">Tester la démo ↗</a>
+    <section class="block" style="padding-bottom: 40px;">
+      <div class="block-inner" style="text-align: center;">
+        <p class="eyebrow" style="justify-content: center; display: flex;">Démos</p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px;">Deux formats, un même niveau de finition</h1>
+        <p style="color: var(--text-muted); max-width: 56ch; margin: 0 auto;">Clique et navigue vraiment sur les démos pour te faire une idée du rendu final sur ton téléphone ou ton ordinateur.</p>
       </div>
+    </section>
 
-      <div class="surface-card featured" style="display:flex; flex-direction:column; justify-content:space-between;">
-        <div>
-          <span style="font-family: monospace; font-size: 0.75rem; color: var(--primary);">// MULTI-PAGES</span>
-          <h3 style="margin-top: 10px; font-size: 1.35rem;">Exemple Client (Testeur Dupuis)</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Site complet découpé en plusieurs pages dédiées (Projets, Parcours, Compétences).</p>
+    <section class="block" style="padding-top: 0;">
+      <div class="block-inner">
+        <div class="demo-showcase">
+
+          <div class="demo-card">
+            <div class="browser-mockup" style="border-radius: 0; border-left: none; border-right: none; border-top: none;">
+              <div class="browser-mockup-bar">
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <div class="browser-mockup-url">ncattin.github.io/my-portfolio</div>
+              </div>
+              <div class="browser-mockup-body">
+                <div class="mockup-nav">
+                  <span class="mockup-logo">NC</span>
+                  <div class="mockup-links"><span>Accueil</span><span>Missions</span><span>Contact</span></div>
+                </div>
+                <div class="mockup-title">Étudiant BTS SIO<br><b>Option SISR</b></div>
+                <p class="mockup-text">Passionné par l'informatique et l'infrastructure réseau, présenté en une page fluide.</p>
+                <span class="mockup-btn">Découvrir</span>
+              </div>
+            </div>
+            <div class="demo-card-body">
+              <p class="demo-card-tag">Format épuré — une page</p>
+              <h3>Portfolio personnel de Nathan</h3>
+              <p>Une identité et un parcours condensés sur une seule page au scroll fluide, idéal pour un profil qui va droit au but.</p>
+              <a href="https://ncattin.github.io/my-portfolio/" target="_blank" class="btn btn-secondary">Tester la démo ↗</a>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <div class="browser-mockup" style="border-radius: 0; border-left: none; border-right: none; border-top: none;">
+              <div class="browser-mockup-bar">
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <div class="browser-mockup-url">portfolioforu.github.io/demo-portfolio</div>
+              </div>
+              <div class="browser-mockup-body">
+                <div class="mockup-nav">
+                  <span class="mockup-logo">● Testeur Dupuis</span>
+                  <div class="mockup-links"><span>Accueil</span><span>Parcours</span><span>Projets</span><span>Contact</span></div>
+                </div>
+                <div class="mockup-title"><b>2 ans</b> à sécuriser des<br>infrastructures réseau</div>
+                <p class="mockup-text">Cinq pages dédiées : accueil, parcours, compétences, certifications et contact.</p>
+                <span class="mockup-btn">Voir mon parcours</span>
+              </div>
+            </div>
+            <div class="demo-card-body">
+              <p class="demo-card-tag">Format complet — plusieurs pages</p>
+              <h3>Exemple client (Testeur Dupuis)</h3>
+              <p>Un site structuré en pages dédiées (parcours, compétences, certifications, contact) pour un profil riche en expériences et projets.</p>
+              <a href="https://portfolioforu.github.io/demo-portfolio/" target="_blank" class="btn btn-primary">Tester la démo ↗</a>
+            </div>
+          </div>
+
         </div>
-        <a href="https://portfolioforu.github.io/demo-portfolio/" target="_blank" class="btn-primary" style="margin-top: 28px;">Tester la démo ↗</a>
       </div>
-    </div>
+    </section>
+
+    <section class="block" style="background: var(--surface); border-top: 1px solid var(--border);">
+      <div class="block-inner" style="text-align: center;">
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px;">Lequel te correspond ?</h2>
+        <p style="color: var(--text-muted); max-width: 60ch; margin: 0 auto 28px;">
+          Pas besoin de trancher tout de suite — précise ta préférence dans le formulaire de commande, ou demande-moi conseil selon ton profil.
+        </p>
+        <a href="commander.html" class="btn btn-primary" style="padding: 14px 32px;">Démarrer mon projet →</a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <div class="footer-container">
-      <div><strong>Portfolio<span style="color:var(--primary)">ForU</span></strong></div>
-      <div><a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a> | © 2026 portfolio-for-u.fr</div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure pour étudiants et jeunes diplômés en tech.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="apropos.html">À propos</a>
+          <a href="tarifs.html">Tarifs</a>
+          <a href="demos.html">Démos</a>
+          <a href="commander.html">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Portfolio For U — Développé par Nathan Cattin</span>
+        <span>portfolio-for-u.fr</span>
+      </div>
     </div>
   </footer>
 
