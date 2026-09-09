@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio For U — Portfolio sur-mesure pour étudiants tech</title>
+  <title>Portfolio For U — Portfolios sur-mesure pour étudiants tech</title>
+  <meta name="description" content="Un portfolio professionnel conçu pour toi : code propre, design soigné, livré en 24/48h. Pensé pour les recruteurs du secteur tech." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,15 +12,16 @@
   <header>
     <div class="header-container">
       <a href="index.html" class="logo-group">
-        <div class="logo-icon">&gt;_</div>
+        <div class="logo-mark">P</div>
         <div class="logo-text">Portfolio<span>ForU</span></div>
       </a>
 
       <nav class="nav-desktop">
         <a href="index.html" class="active">Accueil</a>
+        <a href="apropos.html">À propos</a>
         <a href="tarifs.html">Tarifs</a>
         <a href="demos.html">Démos</a>
-        <a href="commander.html" class="btn-primary">Commander</a>
+        <a href="commander.html" class="btn btn-primary">Commander</a>
       </nav>
 
       <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
@@ -27,56 +29,194 @@
 
     <div class="nav-mobile" id="mobileNav">
       <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
       <a href="tarifs.html">Tarifs</a>
       <a href="demos.html">Démos</a>
-      <a href="commander.html" class="btn-primary" style="margin-top: 8px;">Commander</a>
+      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
     </div>
   </header>
 
-  <section class="grid-bg hero">
-    <span class="badge">● SÉCURISÉ &amp; SUR-MESURE</span>
-    <h1>Un Portfolio Sur-Mesure Pour <span>Mettre En Avant</span> Ton Parcours</h1>
-    <p>Conçu par Nathan Cattin. Tu me donnes tes infos, ton parcours et tes projets, et je développe ton site personnalisé de A à Z.</p>
-    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="commander.html" class="btn-primary" style="padding: 14px 28px;">Discuter de ton projet →</a>
-      <a href="demos.html" class="btn-secondary" style="padding: 14px 28px;">Voir les démos</a>
-    </div>
-  </section>
-
   <main>
-    <p style="font-family: monospace; color: var(--primary); font-size: 0.85rem;">// COMMENT ÇA MARCHE</p>
-    <h2 style="font-size: 2rem; margin-top: 4px;">Trois étapes, zéro prise de risque</h2>
 
-    <div class="grid-3">
-      <div class="surface-card">
-        <span style="font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: bold;">01</span>
-        <h3 style="margin: 12px 0 8px;">Tu partages ton parcours</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Bio, diplômes, expériences, projets et préférences visuelles via un formulaire guidé.</p>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="hero-badge">● Places limitées chaque mois</span>
+          <h1>Un portfolio qui donne <em>envie de te rencontrer</em></h1>
+          <p class="hero-lede">
+            Tu me donnes ton parcours, tes projets et tes préférences. Je conçois un site personnalisé, pensé pour les recruteurs du secteur tech, livré en 24 à 48h avec des révisions incluses.
+          </p>
+          <div class="hero-actions">
+            <a href="commander.html" class="btn btn-primary">Démarrer mon projet →</a>
+            <a href="demos.html" class="btn btn-secondary">Voir des exemples</a>
+          </div>
+          <div class="hero-proof">
+            <div class="proof-item">
+              <span class="proof-value">24-48h</span>
+              <span class="proof-label">Premier aperçu</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value">2</span>
+              <span class="proof-label">Styles de démo disponibles</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-value">0€</span>
+              <span class="proof-label">Avant validation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="browser-mockup">
+          <div class="browser-mockup-bar">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <div class="browser-mockup-url">tonprenom-portfolio.fr</div>
+          </div>
+          <div class="browser-mockup-body">
+            <div class="mockup-nav">
+              <span class="mockup-logo">● TON NOM</span>
+              <div class="mockup-links">
+                <span>Accueil</span>
+                <span>Parcours</span>
+                <span>Projets</span>
+                <span>Contact</span>
+              </div>
+            </div>
+            <div class="mockup-title">Bâtisseur d'infrastructures<br><b>réseau &amp; systèmes</b></div>
+            <p class="mockup-text">Étudiant en BTS SIO, passionné par l'administration serveur et la cybersécurité.</p>
+            <span class="mockup-btn">Voir mon parcours</span>
+          </div>
+        </div>
       </div>
-      <div class="surface-card">
-        <span style="font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: bold;">02</span>
-        <h3 style="margin: 12px 0 8px;">Je développe ton site</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Code propre, responsive et rapide, pensé pour les recruteurs du secteur tech.</p>
+    </section>
+
+    <section class="block">
+      <div class="block-inner">
+        <div class="block-head">
+          <p class="eyebrow">Comment ça marche</p>
+          <h2>Trois étapes, zéro prise de risque</h2>
+          <p>Tu ne payes qu'une fois l'aperçu validé — pas avant.</p>
+        </div>
+
+        <div class="steps-row">
+          <div class="step-card">
+            <span class="step-num">01</span>
+            <h3>Tu partages ton parcours</h3>
+            <p>Bio, diplômes, expériences, projets et préférences visuelles via un formulaire guidé en 4 étapes.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">02</span>
+            <h3>Je développe ton site</h3>
+            <p>Code propre, responsive et rapide, construit à la main — pas de générateur automatique.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">03</span>
+            <h3>Tu valides, puis tu payes</h3>
+            <p>Aperçu gratuit sous 24/48h, révisions incluses avant toute mise en ligne définitive.</p>
+          </div>
+        </div>
       </div>
-      <div class="surface-card">
-        <span style="font-family: monospace; color: var(--primary); font-size: 1.1rem; font-weight: bold;">03</span>
-        <h3 style="margin: 12px 0 8px;">Tu valides, puis tu paies</h3>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">Aperçu gratuit sous 24/48h, révisions illimitées avant toute mise en ligne.</p>
+    </section>
+
+    <section class="block" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="block-inner">
+        <div class="block-head">
+          <p class="eyebrow">Pourquoi Portfolio For U</p>
+          <h2>Fait pour être vu par un recruteur, pas par un algorithme</h2>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <h3><span class="why-icon">✓</span> Aucun template générique</h3>
+            <p>Chaque site est construit à partir de ton parcours réel, pas d'un thème prêt-à-l'emploi qu'on retrouve partout.</p>
+          </div>
+          <div class="why-card">
+            <h3><span class="why-icon">↻</span> Révisions incluses</h3>
+            <p>Sur les formules Sur-Mesure, tu ajustes le contenu et le style jusqu'à ce que le rendu te corresponde vraiment.</p>
+          </div>
+          <div class="why-card">
+            <h3><span class="why-icon">⚡</span> Code léger et rapide</h3>
+            <p>HTML/CSS écrit à la main, sans surcouche inutile : ton portfolio se charge vite, sur mobile comme sur desktop.</p>
+          </div>
+          <div class="why-card">
+            <h3><span class="why-icon">🔒</span> Tu restes propriétaire</h3>
+            <p>Le code source t'appartient. Tu peux l'héberger toi-même ou nous laisser le mettre en ligne pour toi.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="block">
+      <div class="block-inner">
+        <div class="block-head">
+          <p class="eyebrow">Exemples</p>
+          <h2>Deux façons de présenter ton profil</h2>
+          <p>Selon que tu préfères une page unique ou un site structuré en plusieurs sections.</p>
+        </div>
+
+        <div class="demo-showcase">
+          <div class="demo-card">
+            <div class="demo-card-body">
+              <p class="demo-card-tag">Format épuré</p>
+              <h3>Une page, tout l'essentiel</h3>
+              <p>Un scroll fluide qui va droit au but : identité, parcours et projets sur une seule page.</p>
+              <a href="demos.html" class="btn btn-secondary">Voir la démo →</a>
+            </div>
+          </div>
+          <div class="demo-card">
+            <div class="demo-card-body">
+              <p class="demo-card-tag">Format complet</p>
+              <h3>Un site à plusieurs pages</h3>
+              <p>Accueil, parcours, compétences, projets et contact bien séparés — pour un profil riche en expériences.</p>
+              <a href="demos.html" class="btn btn-secondary">Voir la démo →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="border-top: 1px solid var(--border);">
+      <div class="block-inner" style="text-align: center;">
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 16px;">Prêt à avoir un portfolio qui te ressemble ?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 28px;">L'aperçu est gratuit, tu ne payes qu'après validation.</p>
+        <a href="commander.html" class="btn btn-primary" style="padding: 14px 32px;">Démarrer mon projet →</a>
+      </div>
+    </section>
+
   </main>
 
   <footer>
-    <div class="footer-container">
-      <div>
-        <strong>Portfolio<span style="color:var(--primary)">ForU</span></strong> — Développé par Nathan Cattin
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure pour étudiants et jeunes diplômés en tech.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="apropos.html">À propos</a>
+          <a href="tarifs.html">Tarifs</a>
+          <a href="demos.html">Démos</a>
+          <a href="commander.html">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+        </div>
       </div>
-      <div>
-        <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a> | © 2026 portfolio-for-u.fr
+      <div class="footer-bottom">
+        <span>© 2026 Portfolio For U — Développé par Nathan Cattin</span>
+        <span>portfolio-for-u.fr</span>
       </div>
     </div>
   </footer>
 
 </body>
 </html>
-
