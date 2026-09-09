@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commander — Portfolio For U</title>
+  <meta name="description" content="Lance ta commande de portfolio sur-mesure en 4 étapes. Aucun paiement avant validation de l'aperçu." />
   <link rel="stylesheet" href="style.css" />
   <style>
     .step-indicator {
@@ -38,6 +39,7 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       transition: all 0.3s;
+      font-family: var(--font-display);
     }
     .step-badge.active {
       border-color: var(--primary);
@@ -49,32 +51,32 @@
       border-color: var(--primary);
       color: #fff;
     }
-    .form-step {
-      display: none;
-    }
-    .form-step.active {
-      display: block;
-    }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
     .step-title {
+      font-family: var(--font-display);
       font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 20px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
+      color: var(--text);
     }
-    .step-title span {
-      font-family: monospace;
-      color: var(--primary);
-      font-size: 0.9rem;
-    }
+    .step-title span { color: var(--primary); font-family: var(--font-body); font-size: 0.9rem; }
     .btn-group {
       display: flex;
       justify-content: space-between;
       gap: 12px;
       margin-top: 28px;
+    }
+    .order-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
     }
   </style>
 </head>
@@ -83,15 +85,16 @@
   <header>
     <div class="header-container">
       <a href="index.html" class="logo-group">
-        <div class="logo-icon">&gt;_</div>
+        <div class="logo-mark">P</div>
         <div class="logo-text">Portfolio<span>ForU</span></div>
       </a>
 
       <nav class="nav-desktop">
         <a href="index.html">Accueil</a>
+        <a href="apropos.html">À propos</a>
         <a href="tarifs.html">Tarifs</a>
         <a href="demos.html">Démos</a>
-        <a href="commander.html" class="btn-primary">Commander</a>
+        <a href="commander.html" class="btn btn-primary active">Commander</a>
       </nav>
 
       <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
@@ -99,16 +102,18 @@
 
     <div class="nav-mobile" id="mobileNav">
       <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
       <a href="tarifs.html">Tarifs</a>
       <a href="demos.html">Démos</a>
-      <a href="commander.html" class="btn-primary" style="margin-top: 8px;">Commander</a>
+      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
     </div>
   </header>
 
-  <main style="max-width: 720px;">
+  <main style="max-width: 760px; margin: 0 auto; padding: 60px 28px;">
     <div style="text-align: center; margin-bottom: 32px;">
-      <h1 style="font-size: 2.25rem;">Lance ta commande</h1>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">
+      <p class="eyebrow" style="justify-content: center; display: flex;">Commander</p>
+      <h1 style="font-size: clamp(1.9rem, 3.5vw, 2.4rem); margin-bottom: 12px;">Lance ta commande</h1>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
         Remplis le formulaire en 4 étapes. Aucun paiement avant validation de l'aperçu.
       </p>
     </div>
@@ -120,12 +125,11 @@
       <div class="step-badge" id="badge-4">4</div>
     </div>
 
-    <form action="https://formspree.io/f/xwlknvza" method="POST" enctype="multipart/form-data" class="surface-card" id="multiStepForm">
-      
-      <!-- ÉTAPE 1 -->
+    <form action="https://formspree.io/f/xwlknvza" method="POST" enctype="multipart/form-data" class="order-card" id="multiStepForm">
+
       <div class="form-step active" id="step-1">
         <div class="step-title"><span>01.</span> Contact &amp; Formule</div>
-        
+
         <div class="form-group">
           <label>Nom et Prénom *</label>
           <input type="text" name="name" id="name" required placeholder="Ex: Alex Dupont" />
@@ -146,12 +150,20 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <label>Format préféré</label>
+          <select name="format">
+            <option value="epure">Format épuré (une page)</option>
+            <option value="complet">Format complet (plusieurs pages)</option>
+            <option value="conseil">Je veux un conseil</option>
+          </select>
+        </div>
+
         <div class="btn-group" style="justify-content: flex-end;">
-          <button type="button" class="btn-primary" onclick="nextStep(1)">Suivant →</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(1)">Suivant →</button>
         </div>
       </div>
 
-      <!-- ÉTAPE 2 -->
       <div class="form-step" id="step-2">
         <div class="step-title"><span>02.</span> Présentation &amp; Parcours</div>
 
@@ -171,12 +183,11 @@
         </div>
 
         <div class="btn-group">
-          <button type="button" class="btn-secondary" onclick="prevStep(2)">← Précédent</button>
-          <button type="button" class="btn-primary" onclick="nextStep(2)">Suivant →</button>
+          <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Précédent</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(2)">Suivant →</button>
         </div>
       </div>
 
-      <!-- ÉTAPE 3 -->
       <div class="form-step" id="step-3">
         <div class="step-title"><span>03.</span> Compétences &amp; Projets</div>
 
@@ -191,12 +202,11 @@
         </div>
 
         <div class="btn-group">
-          <button type="button" class="btn-secondary" onclick="prevStep(3)">← Précédent</button>
-          <button type="button" class="btn-primary" onclick="nextStep(3)">Suivant →</button>
+          <button type="button" class="btn btn-secondary" onclick="prevStep(3)">← Précédent</button>
+          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Suivant →</button>
         </div>
       </div>
 
-      <!-- ÉTAPE 4 -->
       <div class="form-step" id="step-4">
         <div class="step-title"><span>04.</span> Fichiers &amp; Préférences</div>
 
@@ -210,9 +220,13 @@
           <textarea name="notes" rows="3" placeholder="Couleurs préférées, liens GitHub / LinkedIn à ajouter..."></textarea>
         </div>
 
+        <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px;">
+          En envoyant ce formulaire, tu acceptes nos <a href="cgv.html" style="color: var(--primary);">conditions générales de vente</a>.
+        </p>
+
         <div class="btn-group">
-          <button type="button" class="btn-secondary" onclick="prevStep(4)">← Précédent</button>
-          <button type="submit" class="btn-primary" style="padding: 12px 24px;">Envoyer ma commande 🚀</button>
+          <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Précédent</button>
+          <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">Envoyer ma commande 🚀</button>
         </div>
       </div>
 
@@ -220,9 +234,34 @@
   </main>
 
   <footer>
-    <div class="footer-container">
-      <div><strong>Portfolio<span style="color:var(--primary)">ForU</span></strong></div>
-      <div><a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a> | © 2026 portfolio-for-u.fr</div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure pour étudiants et jeunes diplômés en tech.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="apropos.html">À propos</a>
+          <a href="tarifs.html">Tarifs</a>
+          <a href="demos.html">Démos</a>
+          <a href="commander.html">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Portfolio For U — Développé par Nathan Cattin</span>
+        <span>portfolio-for-u.fr</span>
+      </div>
     </div>
   </footer>
 
