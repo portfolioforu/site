@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merci — Portfolio For U</title>
+  <meta name="description" content="Merci pour ta commande, Portfolio For U revient vers toi rapidement." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-mark">P</div>
+        <div class="logo-text">Portfolio<span>ForU</span></div>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html">Accueil</a>
+        <a href="apropos.html">À propos</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="demos.html">Démos</a>
+        <a href="commander.html" class="btn btn-primary">Commander</a>
+      </nav>
+
+      <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+    </div>
+
+    <div class="nav-mobile" id="mobileNav">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="demos.html">Démos</a>
+      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="block" style="text-align: center; max-width: 640px; margin: 0 auto;">
+      <p class="eyebrow" style="justify-content: center; display: flex;">Commande confirmée</p>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 18px;">Merci pour ta commande !</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 32px;">
+        Ton paiement a bien été pris en compte. Je reviens vers toi par email sous 24 à 48h avec le premier aperçu de ton portfolio.
+      </p>
+      <div class="card" style="text-align: left; margin-bottom: 32px;">
+        <h3 style="margin-bottom: 12px;">Et maintenant ?</h3>
+        <ul class="legal-body" style="padding-left: 20px;">
+          <li>Je prends connaissance des informations envoyées dans ton formulaire.</li>
+          <li>Je te transmets un premier aperçu de ton portfolio.</li>
+          <li>Si ta formule inclut des révisions, on ajuste ensemble jusqu'à ce que ça te convienne.</li>
+        </ul>
+      </div>
+      <a href="index.html" class="btn btn-primary" style="padding: 14px 32px;">Retour à l'accueil</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure pour étudiants et jeunes diplômés en tech.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="apropos.html">À propos</a>
+          <a href="tarifs.html">Tarifs</a>
+          <a href="demos.html">Démos</a>
+          <a href="commander.html">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Portfolio For U — Développé par Nathan Cattin</span>
+        <span>portfolio-for-u.fr</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
