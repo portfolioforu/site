@@ -226,7 +226,7 @@
 
         <div class="btn-group">
           <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Précédent</button>
-          <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">Envoyer ma commande 🚀</button>
+          <button type="button" class="btn btn-primary" id="submitBtn" style="padding: 12px 24px;" onclick="submitOrder()">Payer et envoyer ma commande 🚀</button>
         </div>
       </div>
 
@@ -299,6 +299,41 @@
 
     function prevStep(current) {
       showStep(current - 1);
+    }
+
+    const STRIPE_LINKS = {
+      'express-20': 'https://buy.stripe.com/test_fZu9AV9gCbhreRn2Na7Zu00',
+      'express-30': 'https://buy.stripe.com/test_cNi5kFboKbhr7oVbjG7Zu01',
+      'surmesure-40': 'https://buy.stripe.com/test_6oU4gB1Oa99jfVr5Zm7Zu02',
+      'surmesure-55': 'https://buy.stripe.com/test_5kQ00l1Oa3OZ8sZdrO7Zu03'
+    };
+
+    async function submitOrder() {
+      const form = document.getElementById('multiStepForm');
+      const btn = document.getElementById('submitBtn');
+      const formula = document.getElementById('formula').value;
+      const stripeUrl = STRIPE_LINKS[formula];
+
+      if (!stripeUrl) {
+        alert("Formule inconnue, merci de vérifier ton choix à l'étape 1.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Envoi en cours...';
+
+      try {
+        const formData = new FormData(form);
+        await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+      } catch (err) {
+        console.error('Erreur envoi formulaire :', err);
+      }
+
+      window.location.href = stripeUrl;
     }
   </script>
 
