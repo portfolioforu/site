@@ -78,6 +78,18 @@
       border-radius: 14px;
       padding: 32px;
     }
+    .field-error {
+      color: var(--primary);
+      font-size: 0.8rem;
+      margin-top: -4px;
+      display: none;
+    }
+    .form-group.invalid .field-error { display: block; }
+    .form-group.invalid input,
+    .form-group.invalid textarea,
+    .form-group.invalid select {
+      border-color: var(--primary);
+    }
   </style>
 </head>
 <body>
@@ -114,7 +126,7 @@
       <p class="eyebrow" style="justify-content: center; display: flex;">Commander</p>
       <h1 style="font-size: clamp(1.9rem, 3.5vw, 2.4rem); margin-bottom: 12px;">Lance ta commande</h1>
       <p style="color: var(--text-muted); font-size: 0.95rem;">
-        Remplis le formulaire en 4 étapes. Aucun paiement avant validation de l'aperçu.
+        Remplis le formulaire en 4 étapes. Je te fais un aperçu gratuit avant tout paiement — tu ne payes que si ça te plaît.
       </p>
     </div>
 
@@ -130,33 +142,39 @@
       <div class="form-step active" id="step-1">
         <div class="step-title"><span>01.</span> Contact &amp; Formule</div>
 
-        <div class="form-group">
+        <div class="form-group" data-required="text">
           <label>Nom et Prénom *</label>
           <input type="text" name="name" id="name" required placeholder="Ex: Alex Dupont" />
+          <span class="field-error">Merci de renseigner ton nom.</span>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-required="text">
           <label>Email de contact *</label>
           <input type="email" name="email" id="email" required placeholder="alex@example.com" />
+          <span class="field-error">Merci de renseigner un email valide.</span>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" data-required="text">
           <label>Choisis ta formule *</label>
           <select name="formula" id="formula" required>
+            <option value="" selected disabled>Sélectionne une formule</option>
             <option value="express-20">Express — Fichiers seuls (20€)</option>
             <option value="express-30">Express — Clé en main (30€)</option>
             <option value="surmesure-40">Sur-Mesure — Fichiers seuls (40€)</option>
-            <option value="surmesure-55" selected>Sur-Mesure — Clé en main (55€ - Aperçu gratuit)</option>
+            <option value="surmesure-55">Sur-Mesure — Clé en main (55€ - Aperçu gratuit)</option>
           </select>
+          <span class="field-error">Merci de choisir une formule.</span>
         </div>
 
-        <div class="form-group">
-          <label>Format préféré</label>
-          <select name="format">
+        <div class="form-group" data-required="text">
+          <label>Format préféré *</label>
+          <select name="format" id="format" required>
+            <option value="" selected disabled>Sélectionne un format</option>
             <option value="epure">Format épuré (une page)</option>
             <option value="complet">Format complet (plusieurs pages)</option>
             <option value="conseil">Je veux un conseil</option>
           </select>
+          <span class="field-error">Merci de choisir un format.</span>
         </div>
 
         <div class="btn-group" style="justify-content: flex-end;">
@@ -167,19 +185,22 @@
       <div class="form-step" id="step-2">
         <div class="step-title"><span>02.</span> Présentation &amp; Parcours</div>
 
-        <div class="form-group">
-          <label>Présentation rapide (Qui es-tu ?)</label>
-          <textarea name="bio" rows="3" placeholder="Ex: Étudiant en BTS SIO SISR, passionné par les réseaux et la cybersécurité..."></textarea>
+        <div class="form-group" data-required="text">
+          <label>Présentation rapide (Qui es-tu ?) *</label>
+          <textarea name="bio" id="bio" rows="3" required placeholder="Ex: Étudiant en BTS SIO SISR, passionné par les réseaux et la cybersécurité..."></textarea>
+          <span class="field-error">Merci de renseigner une présentation, même courte.</span>
         </div>
 
-        <div class="form-group">
-          <label>Formations &amp; Diplômes</label>
-          <textarea name="education" rows="2" placeholder="Ex: BTS SIO (2024-2026), Bac Général NSI..."></textarea>
+        <div class="form-group" data-required="text">
+          <label>Formations &amp; Diplômes *</label>
+          <textarea name="education" id="education" rows="2" required placeholder="Ex: BTS SIO (2024-2026), Bac Général NSI..."></textarea>
+          <span class="field-error">Merci de renseigner tes formations.</span>
         </div>
 
-        <div class="form-group">
-          <label>Expériences professionnelles / Stages</label>
-          <textarea name="experience" rows="2" placeholder="Ex: Stage Technicien Système &amp; Réseau (2 mois)..."></textarea>
+        <div class="form-group" data-required="text">
+          <label>Expériences professionnelles / Stages *</label>
+          <textarea name="experience" id="experience" rows="2" required placeholder="Ex: Stage Technicien Système &amp; Réseau (2 mois)... Si aucune, écris 'Aucune expérience pour le moment'."></textarea>
+          <span class="field-error">Merci de remplir ce champ, même pour indiquer que tu n'as pas d'expérience.</span>
         </div>
 
         <div class="btn-group">
@@ -191,14 +212,16 @@
       <div class="form-step" id="step-3">
         <div class="step-title"><span>03.</span> Compétences &amp; Projets</div>
 
-        <div class="form-group">
-          <label>Compétences clés</label>
-          <input type="text" name="skills" placeholder="Ex: Python, Cisco, Wireshark, Linux, Active Directory..." />
+        <div class="form-group" data-required="text">
+          <label>Compétences clés *</label>
+          <input type="text" name="skills" id="skills" required placeholder="Ex: Python, Cisco, Wireshark, Linux, Active Directory..." />
+          <span class="field-error">Merci de renseigner au moins une compétence.</span>
         </div>
 
-        <div class="form-group">
-          <label>Projets principaux à mettre en avant</label>
-          <textarea name="projects" rows="4" placeholder="Titre, rôle, technologies utilisées et résultats pour 1 à 3 projets clés..."></textarea>
+        <div class="form-group" data-required="text">
+          <label>Projets principaux à mettre en avant *</label>
+          <textarea name="projects" id="projects" rows="4" required placeholder="Titre, rôle, technologies utilisées et résultats pour 1 à 3 projets clés..."></textarea>
+          <span class="field-error">Merci de décrire au moins un projet.</span>
         </div>
 
         <div class="btn-group">
@@ -210,23 +233,25 @@
       <div class="form-step" id="step-4">
         <div class="step-title"><span>04.</span> Fichiers &amp; Préférences</div>
 
-        <div class="form-group">
-          <label>Ton CV actuel (PDF / Word)</label>
-          <input type="file" name="attachment" accept=".pdf,.doc,.docx" />
+        <div class="form-group" data-required="file">
+          <label>Ton CV actuel (PDF / Word) *</label>
+          <input type="file" name="attachment" id="attachment" accept=".pdf,.doc,.docx" required />
+          <span class="field-error">Merci de joindre ton CV.</span>
         </div>
 
-        <div class="form-group">
-          <label>Remarques ou préférences visuelles</label>
-          <textarea name="notes" rows="3" placeholder="Couleurs préférées, liens GitHub / LinkedIn à ajouter..."></textarea>
+        <div class="form-group" data-required="text">
+          <label>Remarques ou préférences visuelles *</label>
+          <textarea name="notes" id="notes" rows="3" required placeholder="Couleurs préférées, liens GitHub / LinkedIn à ajouter... Si aucune préférence, écris 'Pas de préférence particulière'."></textarea>
+          <span class="field-error">Merci de remplir ce champ, même pour indiquer que tu n'as pas de préférence.</span>
         </div>
 
         <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px;">
-          En envoyant ce formulaire, tu acceptes nos <a href="cgv.html" style="color: var(--primary);">conditions générales de vente</a>.
+          En envoyant ce formulaire, tu acceptes nos <a href="cgv.html" style="color: var(--primary);">conditions générales de vente</a>. Aucun paiement ne t'est demandé à cette étape : je te contacte avec un aperçu avant toute chose.
         </p>
 
         <div class="btn-group">
           <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Précédent</button>
-          <button type="button" class="btn btn-primary" id="submitBtn" style="padding: 12px 24px;" onclick="submitOrder()">Payer et envoyer ma commande 🚀</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn" style="padding: 12px 24px;">Envoyer ma commande 🚀</button>
         </div>
       </div>
 
@@ -285,14 +310,41 @@
       }
     }
 
-    function nextStep(current) {
-      if (current === 1) {
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        if (!name || !email) {
-          alert('Merci de remplir ton nom et ton email avant de continuer.');
-          return;
+    function validateStep(stepNumber) {
+      const stepEl = document.getElementById('step-' + stepNumber);
+      const groups = stepEl.querySelectorAll('.form-group[data-required]');
+      let allValid = true;
+      let firstInvalid = null;
+
+      groups.forEach(group => {
+        const field = group.querySelector('input, textarea, select');
+        let valid = true;
+
+        if (group.dataset.required === 'file') {
+          valid = field.files && field.files.length > 0;
+        } else {
+          valid = field.value.trim().length > 0;
         }
+
+        if (!valid) {
+          group.classList.add('invalid');
+          allValid = false;
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          group.classList.remove('invalid');
+        }
+      });
+
+      if (!allValid && firstInvalid) {
+        firstInvalid.focus();
+      }
+
+      return allValid;
+    }
+
+    function nextStep(current) {
+      if (!validateStep(current)) {
+        return;
       }
       showStep(current + 1);
     }
@@ -301,40 +353,11 @@
       showStep(current - 1);
     }
 
-    const STRIPE_LINKS = {
-      'express-20': 'https://buy.stripe.com/test_fZu9AV9gCbhreRn2Na7Zu00',
-      'express-30': 'https://buy.stripe.com/test_cNi5kFboKbhr7oVbjG7Zu01',
-      'surmesure-40': 'https://buy.stripe.com/test_6oU4gB1Oa99jfVr5Zm7Zu02',
-      'surmesure-55': 'https://buy.stripe.com/test_5kQ00l1Oa3OZ8sZdrO7Zu03'
-    };
-
-    async function submitOrder() {
-      const form = document.getElementById('multiStepForm');
-      const btn = document.getElementById('submitBtn');
-      const formula = document.getElementById('formula').value;
-      const stripeUrl = STRIPE_LINKS[formula];
-
-      if (!stripeUrl) {
-        alert("Formule inconnue, merci de vérifier ton choix à l'étape 1.");
-        return;
+    document.getElementById('multiStepForm').addEventListener('submit', function (e) {
+      if (!validateStep(4)) {
+        e.preventDefault();
       }
-
-      btn.disabled = true;
-      btn.innerText = 'Envoi en cours...';
-
-      try {
-        const formData = new FormData(form);
-        await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-      } catch (err) {
-        console.error('Erreur envoi formulaire :', err);
-      }
-
-      window.location.href = stripeUrl;
-    }
+    });
   </script>
 
 </body>
