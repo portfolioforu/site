@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avis clients — Portfolio For U</title>
+  <meta name="description" content="Avis laissés par les clients de Portfolio For U sur leur portfolio sur-mesure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .stars {
+      display: inline-flex;
+      gap: 2px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    .star-picker {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .star-picker button {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--border);
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.15s ease;
+    }
+    .star-picker button.filled { color: var(--gold); }
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .review-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .review-name {
+      font-family: var(--font-display);
+      color: var(--text);
+      font-weight: 600;
+    }
+    .review-date {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .review-comment {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .disclaimer-box {
+      background: var(--gold-dim);
+      border: 1px solid rgba(212, 162, 76, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+    #reviewsList .empty-state {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 24px;
+    }
+    .form-msg {
+      font-size: 0.85rem;
+      margin-top: 10px;
+      display: none;
+    }
+    .form-msg.success { color: #4ade80; display: block; }
+    .form-msg.error { color: var(--primary); display: block; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-mark">P</div>
+        <div class="logo-text">Portfolio<span>ForU</span></div>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html">Accueil</a>
+        <a href="apropos.html">À propos</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="demos.html">Démos</a>
+        <a href="avis.html" class="active">Avis</a>
+        <a href="commander.html" class="btn btn-primary">Commander</a>
+      </nav>
+
+      <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+    </div>
+
+    <div class="nav-mobile" id="mobileNav">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="demos.html">Démos</a>
+      <a href="avis.html">Avis</a>
+      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="block" style="padding-bottom: 20px;">
+      <div class="block-inner">
+        <p class="eyebrow">Avis</p>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 12px;">Ce qu'en disent les clients</h1>
+        <p style="color: var(--text-muted); max-width: 60ch;">Des avis publiés directement par les personnes qui ont commandé un portfolio.</p>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top: 0;">
+      <div class="block-inner" style="max-width: 760px;">
+
+        <div class="disclaimer-box">
+          Tous les avis affichés ici sont publiés librement par nos clients, sans modération de contenu ni sélection. Nous ne créons ni n'achetons jamais de faux avis.
+        </div>
+
+        <div class="order-card" style="margin-bottom: 40px;">
+          <h3 style="margin-bottom: 16px;">Laisser un avis</h3>
+          <form id="reviewForm">
+            <div class="form-group">
+              <label>Ton prénom *</label>
+              <input type="text" id="reviewName" required maxlength="80" placeholder="Ex: Alex" />
+            </div>
+            <div class="form-group">
+              <label>Ta note *</label>
+              <div class="star-picker" id="starPicker">
+                <button type="button" data-value="1">★</button>
+                <button type="button" data-value="2">★</button>
+                <button type="button" data-value="3">★</button>
+                <button type="button" data-value="4">★</button>
+                <button type="button" data-value="5">★</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Ton commentaire *</label>
+              <textarea id="reviewComment" rows="3" required maxlength="1000" placeholder="Qu'as-tu pensé de ton portfolio et de l'accompagnement ?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="reviewSubmitBtn">Publier mon avis</button>
+            <p class="form-msg" id="reviewMsg"></p>
+          </form>
+        </div>
+
+        <h3 style="margin-bottom: 16px;">Tous les avis</h3>
+        <div id="reviewsList">
+          <p class="empty-state">Chargement des avis...</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure pour étudiants et jeunes diplômés en tech.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="apropos.html">À propos</a>
+          <a href="tarifs.html">Tarifs</a>
+          <a href="demos.html">Démos</a>
+          <a href="commander.html">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Portfolio For U — Développé par Nathan Cattin</span>
+        <span>portfolio-for-u.fr</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SUPABASE_URL = 'https://nrzaakdjghgtptuclpdi.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_4Pi83zAwUj714AfVb91Kvw_R2I9mRbS';
+
+    let selectedRating = 0;
+    const starPicker = document.getElementById('starPicker');
+
+    starPicker.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      selectedRating = parseInt(btn.dataset.value, 10);
+      updateStars();
+    });
+
+    function updateStars() {
+      Array.from(starPicker.children).forEach(btn => {
+        const val = parseInt(btn.dataset.value, 10);
+        btn.classList.toggle('filled', val <= selectedRating);
+      });
+    }
+
+    function renderStars(note) {
+      const full = '★'.repeat(note);
+      const empty = '☆'.repeat(5 - note);
+      return '<span class="stars">' + full + empty + '</span>';
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    async function loadReviews() {
+      const list = document.getElementById('reviewsList');
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/avis?select=*&order=created_at.desc`, {
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`
+          }
+        });
+        if (!res.ok) throw new Error('Erreur de chargement');
+        const data = await res.json();
+
+        if (!data.length) {
+          list.innerHTML = '<p class="empty-state">Aucun avis pour le moment. Sois le premier à en laisser un !</p>';
+          return;
+        }
+
+        list.innerHTML = data.map(avis => `
+          <div class="review-card">
+            <div class="review-card-head">
+              <span class="review-name">${escapeHtml(avis.nom)}</span>
+              <span class="review-date">${formatDate(avis.created_at)}</span>
+            </div>
+            ${renderStars(avis.note)}
+            <p class="review-comment" style="margin-top: 10px;">${escapeHtml(avis.commentaire)}</p>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error(err);
+        list.innerHTML = '<p class="empty-state">Impossible de charger les avis pour le moment.</p>';
+      }
+    }
+
+    document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nom = document.getElementById('reviewName').value.trim();
+      const commentaire = document.getElementById('reviewComment').value.trim();
+      const msg = document.getElementById('reviewMsg');
+      const btn = document.getElementById('reviewSubmitBtn');
+
+      msg.className = 'form-msg';
+      msg.textContent = '';
+
+      if (!nom || !commentaire || selectedRating < 1) {
+        msg.className = 'form-msg error';
+        msg.textContent = 'Merci de renseigner ton prénom, une note et un commentaire.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Publication...';
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/avis`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ nom, note: selectedRating, commentaire })
+        });
+
+        if (!res.ok) throw new Error('Erreur lors de la publication');
+
+        msg.className = 'form-msg success';
+        msg.textContent = 'Merci pour ton avis !';
+        document.getElementById('reviewForm').reset();
+        selectedRating = 0;
+        updateStars();
+        loadReviews();
+      } catch (err) {
+        console.error(err);
+        msg.className = 'form-msg error';
+        msg.textContent = "Une erreur est survenue, merci de réessayer.";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Publier mon avis';
+      }
+    });
+
+    loadReviews();
+  </script>
+
+</body>
+</html>
