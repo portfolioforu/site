@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement confirmé — Portfolio For U</title>
+  <meta name="description" content="Paiement confirmé — ton portfolio te sera livré sous 24 h." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo-group">
+        <div class="logo-mark">P</div>
+        <div class="logo-text">Portfolio<span>ForU</span></div>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="index.html">Accueil</a>
+        <a href="apropos.html">À propos</a>
+        <a href="tarifs.html">Tarifs</a>
+        <a href="demos.html">Démos</a>
+        <a href="avis.html">Avis</a>
+        <a href="commander.html" class="btn btn-primary">Commander</a>
+      </nav>
+
+      <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+    </div>
+
+    <div class="nav-mobile" id="mobileNav">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="demos.html">Démos</a>
+      <a href="avis.html">Avis</a>
+      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="block" style="text-align: center; max-width: 640px; margin: 0 auto;">
+      <p class="eyebrow" style="justify-content: center; display: flex;">Paiement confirmé</p>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 18px;">Paiement bien reçu, merci !</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 32px;">
+        Ton portfolio est validé et ton paiement est enregistré. Il ne reste plus qu'à te le livrer.
+      </p>
+      <div class="card" style="text-align: left; margin-bottom: 32px;">
+        <h3 style="margin-bottom: 12px;">Et maintenant ?</h3>
+        <ul class="legal-body" style="padding-left: 20px;">
+          <li>Je prépare ton archive finale : le code de ton portfolio et son fichier de licence.</li>
+          <li>Tu la reçois par email <strong>sous 24 h</strong>, et le plus souvent bien plus vite.</li>
+          <li>Tu n'as plus qu'à l'héberger où tu veux. Si tu bloques sur cette étape, écris-moi, je t'aide.</li>
+        </ul>
+      </div>
+      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 28px;">
+        Une question ? <a href="mailto:hello.portfolioforu@outlook.com" style="color: var(--primary);">hello.portfolioforu@outlook.com</a>
+      </p>
+      <a href="index.html" class="btn btn-primary" style="padding: 14px 32px;">Retour à l'accueil</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure, faits pour te ressembler.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="apropos.html">À propos</a>
+          <a href="tarifs.html">Tarifs</a>
+          <a href="demos.html">Démos</a>
+          <a href="avis.html">Avis</a>
+          <a href="commander.html">Commander</a>
+        </div>
+        <div class="footer-col">
+          <h4>Légal</h4>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="cgv.html">CGV</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Portfolio For U — Développé par Nathan</span>
+        <span>portfolio-for-u.fr</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
