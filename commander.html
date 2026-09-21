@@ -1,382 +1,379 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commander — Portfolio For U</title>
-  <meta name="description" content="Lance ta commande de portfolio sur-mesure en 4 étapes. Aucun paiement avant validation de l'aperçu." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <style>
-    .step-indicator {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .step-indicator::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background-color: var(--border);
-      z-index: 1;
-      transform: translateY(-50%);
-    }
-    .step-badge {
-      position: relative;
-      z-index: 2;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: var(--bg);
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      transition: all 0.3s;
-      font-family: var(--font-display);
-    }
-    .step-badge.active {
-      border-color: var(--primary);
-      color: var(--primary);
-      box-shadow: 0 0 15px var(--primary-glow);
-    }
-    .step-badge.completed {
-      background-color: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-    .form-step { display: none; }
-    .form-step.active { display: block; }
-    .step-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--text);
-    }
-    .step-title span { color: var(--primary); font-family: var(--font-body); font-size: 0.9rem; }
-    .btn-group {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 28px;
-    }
-    .order-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 32px;
-    }
-    .field-error {
-      color: var(--primary);
-      font-size: 0.8rem;
-      margin-top: -4px;
-      display: none;
-    }
-    .form-group.invalid .field-error { display: block; }
-    .form-group.invalid input,
-    .form-group.invalid textarea,
-    .form-group.invalid select {
-      border-color: var(--primary);
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commander — Portfolio For U</title>
+<meta name="description" content="Lance ta commande de portfolio sur-mesure en 4 étapes. Aucun paiement avant validation de l'aperçu." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<style>
+.step-indicator {
+display: flex;
+justify-content: space-between;
+margin-bottom: 30px;
+position: relative;
+}
+.step-indicator::before {
+content: "";
+position: absolute;
+top: 50%;
+left: 0;
+right: 0;
+height: 2px;
+background-color: var(--border);
+z-index: 1;
+transform: translateY(-50%);
+}
+.step-badge {
+position: relative;
+z-index: 2;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+background-color: var(--bg);
+border: 2px solid var(--border);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+font-size: 0.85rem;
+color: var(--text-muted);
+transition: all 0.3s;
+font-family: var(--font-display);
+}
+.step-badge.active {
+border-color: var(--primary);
+color: var(--primary);
+box-shadow: 0 0 15px var(--primary-glow);
+}
+.step-badge.completed {
+background-color: var(--primary);
+border-color: var(--primary);
+color: #fff;
+}
+.form-step { display: none; }
+.form-step.active { display: block; }
+.step-title {
+font-family: var(--font-display);
+font-size: 1.2rem;
+font-weight: 600;
+margin-bottom: 20px;
+border-bottom: 1px solid var(--border);
+padding-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
+color: var(--text);
+}
+.step-title span { color: var(--primary); font-family: var(--font-body); font-size: 0.9rem; }
+.btn-group {
+display: flex;
+justify-content: space-between;
+gap: 12px;
+margin-top: 28px;
+}
+.order-card {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 14px;
+padding: 32px;
+}
+.field-error {
+color: var(--primary);
+font-size: 0.8rem;
+margin-top: -4px;
+display: none;
+}
+.form-group.invalid .field-error { display: block; }
+.form-group.invalid input,
+.form-group.invalid textarea,
+.form-group.invalid select {
+border-color: var(--primary);
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-group">
-        <div class="logo-mark">P</div>
-        <div class="logo-text">Portfolio<span>ForU</span></div>
-      </a>
+<header>
+<div class="header-container">
+<a href="index.html" class="logo-group">
+<div class="logo-mark">P</div>
+<div class="logo-text">Portfolio<span>ForU</span></div>
+</a>
 
-      <nav class="nav-desktop">
-        <a href="index.html">Accueil</a>
-        <a href="apropos.html">À propos</a>
-        <a href="tarifs.html">Tarifs</a>
-        <a href="demos.html">Démos</a>
-        <a href="avis.html">Avis</a>
-        <a href="commander.html" class="btn btn-primary active">Commander</a>
-      </nav>
+<nav class="nav-desktop">
+<a href="index.html">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="tarifs.html">Tarifs</a>
+<a href="demos.html">Démos</a>
+<a href="avis.html">Avis</a>
+<a href="commander.html" class="btn btn-primary active">Commander</a>
+</nav>
 
-      <button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
-    </div>
+<button class="burger-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+</div>
 
-    <div class="nav-mobile" id="mobileNav">
-      <a href="index.html">Accueil</a>
-      <a href="apropos.html">À propos</a>
-      <a href="tarifs.html">Tarifs</a>
-      <a href="demos.html">Démos</a>
-      <a href="avis.html">Avis</a>
-      <a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
-    </div>
-  </header>
+<div class="nav-mobile" id="mobileNav">
+<a href="index.html">Accueil</a>
+<a href="apropos.html">À propos</a>
+<a href="tarifs.html">Tarifs</a>
+<a href="demos.html">Démos</a>
+<a href="avis.html">Avis</a>
+<a href="commander.html" class="btn btn-primary" style="margin-top: 8px;">Commander</a>
+</div>
+</header>
 
-  <main style="max-width: 760px; margin: 0 auto; padding: 60px 28px;">
-    <div style="text-align: center; margin-bottom: 32px;">
-      <p class="eyebrow" style="justify-content: center; display: flex;">Commander</p>
-      <h1 style="font-size: clamp(1.9rem, 3.5vw, 2.4rem); margin-bottom: 12px;">Lance ta commande</h1>
-      <p style="color: var(--text-muted); font-size: 0.95rem;">
-        Remplis le formulaire en 4 étapes. Je te fais un aperçu gratuit avant tout paiement — tu ne payes que si ça te plaît.
-      </p>
-    </div>
+<main style="max-width: 760px; margin: 0 auto; padding: 60px 28px;">
+<div style="text-align: center; margin-bottom: 32px;">
+<p class="eyebrow" style="justify-content: center; display: flex;">Commander</p>
+<h1 style="font-size: clamp(1.9rem, 3.5vw, 2.4rem); margin-bottom: 12px;">Lance ta commande</h1>
+<p style="color: var(--text-muted); font-size: 0.95rem;">
+Remplis le formulaire en 4 étapes. Je te fais un aperçu gratuit avant tout paiement — tu ne payes que si ça te plaît.
+</p>
+</div>
 
-    <div class="step-indicator">
-      <div class="step-badge active" id="badge-1">1</div>
-      <div class="step-badge" id="badge-2">2</div>
-      <div class="step-badge" id="badge-3">3</div>
-      <div class="step-badge" id="badge-4">4</div>
-    </div>
+<div class="step-indicator">
+<div class="step-badge active" id="badge-1">1</div>
+<div class="step-badge" id="badge-2">2</div>
+<div class="step-badge" id="badge-3">3</div>
+<div class="step-badge" id="badge-4">4</div>
+</div>
 
-    <form action="https://formsubmit.co/hello.portfolioforu@outlook.com" method="POST" enctype="multipart/form-data" class="order-card" id="multiStepForm" novalidate>
-      <input type="hidden" name="_subject" value="Nouvelle commande — Portfolio For U" />
-      <input type="hidden" name="_next" value="https://portfolio-for-u.fr/merci.html" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off" />
+<form action="https://odd-snowflake-2bb4.hello-portfolioforu.workers.dev" method="POST" enctype="multipart/form-data" class="order-card" id="multiStepForm" novalidate>
+<input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off" />
 
-      <div class="form-step active" id="step-1">
-        <div class="step-title"><span>01.</span> Contact &amp; Formule</div>
+<div class="form-step active" id="step-1">
+<div class="step-title"><span>01.</span> Contact &amp; Formule</div>
 
-        <div class="form-group" data-required="text">
-          <label>Nom et Prénom *</label>
-          <input type="text" name="name" id="name" required placeholder="Ex: Alex Dupont" />
-          <span class="field-error">Merci de renseigner ton nom.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Nom et Prénom *</label>
+<input type="text" name="name" id="name" required placeholder="Ex: Alex Dupont" />
+<span class="field-error">Merci de renseigner ton nom.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Email de contact *</label>
-          <input type="email" name="email" id="email" required placeholder="alex@example.com" />
-          <span class="field-error">Merci de renseigner un email valide.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Email de contact *</label>
+<input type="email" name="email" id="email" required placeholder="alex@example.com" />
+<span class="field-error">Merci de renseigner un email valide.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Choisis ta formule *</label>
-          <select name="formula" id="formula" required>
-            <option value="" selected disabled>Sélectionne une formule</option>
-            <option value="surmesure-20">Sur-Mesure — Fichiers seuls (20€)</option>
-            <option value="surmesure-30">Sur-Mesure — Clé en main (30€)</option>
-          </select>
-          <span class="field-error">Merci de choisir une formule.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Choisis ta formule *</label>
+<select name="formula" id="formula" required>
+<option value="" selected disabled>Sélectionne une formule</option>
+<option value="surmesure-20">Sur-Mesure — Fichiers seuls (20€)</option>
+<option value="surmesure-30">Sur-Mesure — Clé en main (30€)</option>
+</select>
+<span class="field-error">Merci de choisir une formule.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Format préféré *</label>
-          <select name="format" id="format" required>
-            <option value="" selected disabled>Sélectionne un format</option>
-            <option value="epure">Format épuré (une page)</option>
-            <option value="complet">Format complet (plusieurs pages)</option>
-            <option value="conseil">Je veux un conseil</option>
-          </select>
-          <span class="field-error">Merci de choisir un format.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Format préféré *</label>
+<select name="format" id="format" required>
+<option value="" selected disabled>Sélectionne un format</option>
+<option value="epure">Format épuré (une page)</option>
+<option value="complet">Format complet (plusieurs pages)</option>
+<option value="conseil">Je veux un conseil</option>
+</select>
+<span class="field-error">Merci de choisir un format.</span>
+</div>
 
-        <div class="btn-group" style="justify-content: flex-end;">
-          <button type="button" class="btn btn-primary" onclick="nextStep(1)">Suivant →</button>
-        </div>
-      </div>
+<div class="btn-group" style="justify-content: flex-end;">
+<button type="button" class="btn btn-primary" onclick="nextStep(1)">Suivant →</button>
+</div>
+</div>
 
-      <div class="form-step" id="step-2">
-        <div class="step-title"><span>02.</span> Présentation &amp; Parcours</div>
+<div class="form-step" id="step-2">
+<div class="step-title"><span>02.</span> Présentation &amp; Parcours</div>
 
-        <div class="form-group" data-required="text">
-          <label>Présentation rapide (Qui es-tu ?) *</label>
-          <textarea name="bio" id="bio" rows="3" required placeholder="Ex: Étudiante en marketing digital, passionnée par la stratégie de marque..."></textarea>
-          <span class="field-error">Merci de renseigner une présentation, même courte.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Présentation rapide (Qui es-tu ?) *</label>
+<textarea name="bio" id="bio" rows="3" required placeholder="Ex: Étudiante en marketing digital, passionnée par la stratégie de marque..."></textarea>
+<span class="field-error">Merci de renseigner une présentation, même courte.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Formations &amp; Diplômes *</label>
-          <textarea name="education" id="education" rows="2" required placeholder="Ex: Licence Marketing (2024-2026), Bac Général..."></textarea>
-          <span class="field-error">Merci de renseigner tes formations.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Formations &amp; Diplômes *</label>
+<textarea name="education" id="education" rows="2" required placeholder="Ex: Licence Marketing (2024-2026), Bac Général..."></textarea>
+<span class="field-error">Merci de renseigner tes formations.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Expériences professionnelles / Stages *</label>
-          <textarea name="experience" id="experience" rows="2" required placeholder="Ex: Stage Technicien Système &amp; Réseau (2 mois)... Si aucune, écris 'Aucune expérience pour le moment'."></textarea>
-          <span class="field-error">Merci de remplir ce champ, même pour indiquer que tu n'as pas d'expérience.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Expériences professionnelles / Stages *</label>
+<textarea name="experience" id="experience" rows="2" required placeholder="Ex: Stage Technicien Système &amp; Réseau (2 mois)... Si aucune, écris 'Aucune expérience pour le moment'."></textarea>
+<span class="field-error">Merci de remplir ce champ, même pour indiquer que tu n'as pas d'expérience.</span>
+</div>
 
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Précédent</button>
-          <button type="button" class="btn btn-primary" onclick="nextStep(2)">Suivant →</button>
-        </div>
-      </div>
+<div class="btn-group">
+<button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Précédent</button>
+<button type="button" class="btn btn-primary" onclick="nextStep(2)">Suivant →</button>
+</div>
+</div>
 
-      <div class="form-step" id="step-3">
-        <div class="step-title"><span>03.</span> Compétences &amp; Projets</div>
+<div class="form-step" id="step-3">
+<div class="step-title"><span>03.</span> Compétences &amp; Projets</div>
 
-        <div class="form-group" data-required="text">
-          <label>Compétences clés *</label>
-          <input type="text" name="skills" id="skills" required placeholder="Ex: Gestion de projet, Photoshop, réseaux sociaux, anglais courant..." />
-          <span class="field-error">Merci de renseigner au moins une compétence.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Compétences clés *</label>
+<input type="text" name="skills" id="skills" required placeholder="Ex: Gestion de projet, Photoshop, réseaux sociaux, anglais courant..." />
+<span class="field-error">Merci de renseigner au moins une compétence.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Projets principaux à mettre en avant *</label>
-          <textarea name="projects" id="projects" rows="4" required placeholder="Titre, rôle, technologies utilisées et résultats pour 1 à 3 projets clés..."></textarea>
-          <span class="field-error">Merci de décrire au moins un projet.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Projets principaux à mettre en avant *</label>
+<textarea name="projects" id="projects" rows="4" required placeholder="Titre, rôle, technologies utilisées et résultats pour 1 à 3 projets clés..."></textarea>
+<span class="field-error">Merci de décrire au moins un projet.</span>
+</div>
 
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="prevStep(3)">← Précédent</button>
-          <button type="button" class="btn btn-primary" onclick="nextStep(3)">Suivant →</button>
-        </div>
-      </div>
+<div class="btn-group">
+<button type="button" class="btn btn-secondary" onclick="prevStep(3)">← Précédent</button>
+<button type="button" class="btn btn-primary" onclick="nextStep(3)">Suivant →</button>
+</div>
+</div>
 
-      <div class="form-step" id="step-4">
-        <div class="step-title"><span>04.</span> Fichiers &amp; Préférences</div>
+<div class="form-step" id="step-4">
+<div class="step-title"><span>04.</span> Fichiers &amp; Préférences</div>
 
-        <div class="form-group" data-required="file">
-          <label>Ton CV actuel (PDF / Word) *</label>
-          <input type="file" name="attachment" id="attachment" accept=".pdf,.doc,.docx" required />
-          <span class="field-error">Merci de joindre ton CV.</span>
-        </div>
+<div class="form-group" data-required="file">
+<label>Ton CV actuel (PDF / Word) *</label>
+<input type="file" name="attachment" id="attachment" accept=".pdf,.doc,.docx" required />
+<span class="field-error">Merci de joindre ton CV.</span>
+</div>
 
-        <div class="form-group" data-required="text">
-          <label>Remarques ou préférences visuelles *</label>
-          <textarea name="notes" id="notes" rows="3" required placeholder="Couleurs préférées, liens GitHub / LinkedIn à ajouter... Si aucune préférence, écris 'Pas de préférence particulière'."></textarea>
-          <span class="field-error">Merci de remplir ce champ, même pour indiquer que tu n'as pas de préférence.</span>
-        </div>
+<div class="form-group" data-required="text">
+<label>Remarques ou préférences visuelles *</label>
+<textarea name="notes" id="notes" rows="3" required placeholder="Couleurs préférées, liens GitHub / LinkedIn à ajouter... Si aucune préférence, écris 'Pas de préférence particulière'."></textarea>
+<span class="field-error">Merci de remplir ce champ, même pour indiquer que tu n'as pas de préférence.</span>
+</div>
 
-        <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px;">
-          En envoyant ce formulaire, tu acceptes nos <a href="cgv.html" style="color: var(--primary);">conditions générales de vente</a>. Aucun paiement ne t'est demandé à cette étape : je te contacte avec un aperçu avant toute chose.
-        </p>
+<p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px;">
+En envoyant ce formulaire, tu acceptes nos <a href="cgv.html" style="color: var(--primary);">conditions générales de vente</a>. Aucun paiement ne t'est demandé à cette étape : je te contacte avec un aperçu avant toute chose.
+</p>
 
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Précédent</button>
-          <button type="submit" class="btn btn-primary" id="submitBtn" style="padding: 12px 24px;">Envoyer ma commande 🚀</button>
-        </div>
+<div class="btn-group">
+<button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Précédent</button>
+<button type="submit" class="btn btn-primary" id="submitBtn" style="padding: 12px 24px;">Envoyer ma commande 🚀</button>
+</div>
 
-        <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 16px; display: flex; align-items: center; gap: 8px;">
-          <span aria-hidden="true">🔒</span> Le règlement se fera après validation de l'aperçu, via un lien de paiement sécurisé Stripe.
-        </p>
-      </div>
+<p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 16px; display: flex; align-items: center; gap: 8px;">
+<span aria-hidden="true">🔒</span> Le règlement se fera après validation de l'aperçu, via un lien de paiement sécurisé Stripe.
+</p>
+</div>
 
-    </form>
-  </main>
+</form>
+</main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-col">
-          <h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
-          <p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure, faits pour te ressembler.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <a href="apropos.html">À propos</a>
-          <a href="tarifs.html">Tarifs</a>
-          <a href="demos.html">Démos</a>
-          <a href="avis.html">Avis</a>
-          <a href="commander.html">Commander</a>
-        </div>
-        <div class="footer-col">
-          <h4>Légal</h4>
-          <a href="mentions-legales.html">Mentions légales</a>
-          <a href="cgv.html">CGV</a>
-          <a href="faq.html">FAQ</a>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Portfolio For U — Développé par Nathan</span>
-        <span>portfolio-for-u.fr</span>
-      </div>
-    </div>
-  </footer>
+<footer>
+<div class="footer-inner">
+<div class="footer-top">
+<div class="footer-col">
+<h4>Portfolio<span style="color: var(--primary);">ForU</span></h4>
+<p style="font-size: 0.85rem; color: var(--text-dim); max-width: 32ch;">Portfolios sur-mesure, faits pour te ressembler.</p>
+</div>
+<div class="footer-col">
+<h4>Navigation</h4>
+<a href="apropos.html">À propos</a>
+<a href="tarifs.html">Tarifs</a>
+<a href="demos.html">Démos</a>
+<a href="avis.html">Avis</a>
+<a href="commander.html">Commander</a>
+</div>
+<div class="footer-col">
+<h4>Légal</h4>
+<a href="mentions-legales.html">Mentions légales</a>
+<a href="cgv.html">CGV</a>
+<a href="faq.html">FAQ</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<a href="mailto:hello.portfolioforu@outlook.com">hello.portfolioforu@outlook.com</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Portfolio For U — Développé par Nathan</span>
+<span>portfolio-for-u.fr</span>
+</div>
+</div>
+</footer>
 
-  <script>
-    function showStep(step) {
-      document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
-      document.getElementById('step-' + step).classList.add('active');
+<script>
+function showStep(step) {
+document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+document.getElementById('step-' + step).classList.add('active');
 
-      for (let i = 1; i <= 4; i++) {
-        const badge = document.getElementById('badge-' + i);
-        badge.classList.remove('active', 'completed');
-        if (i < step) {
-          badge.classList.add('completed');
-          badge.innerText = '✓';
-        } else if (i === step) {
-          badge.classList.add('active');
-          badge.innerText = i;
-        } else {
-          badge.innerText = i;
-        }
-      }
-    }
+for (let i = 1; i <= 4; i++) {
+const badge = document.getElementById('badge-' + i);
+badge.classList.remove('active', 'completed');
+if (i < step) {
+badge.classList.add('completed');
+badge.innerText = '✓';
+} else if (i === step) {
+badge.classList.add('active');
+badge.innerText = i;
+} else {
+badge.innerText = i;
+}
+}
+}
 
-    function validateStep(stepNumber) {
-      const stepEl = document.getElementById('step-' + stepNumber);
-      const groups = stepEl.querySelectorAll('.form-group[data-required]');
-      let allValid = true;
-      let firstInvalid = null;
+function validateStep(stepNumber) {
+const stepEl = document.getElementById('step-' + stepNumber);
+const groups = stepEl.querySelectorAll('.form-group[data-required]');
+let allValid = true;
+let firstInvalid = null;
 
-      groups.forEach(group => {
-        const field = group.querySelector('input, textarea, select');
-        let valid = true;
+groups.forEach(group => {
+const field = group.querySelector('input, textarea, select');
+let valid = true;
 
-        if (group.dataset.required === 'file') {
-          valid = field.files && field.files.length > 0;
-        } else {
-          valid = field.value.trim().length > 0;
-        }
+if (group.dataset.required === 'file') {
+valid = field.files && field.files.length > 0;
+} else {
+valid = field.value.trim().length > 0;
+}
 
-        if (!valid) {
-          group.classList.add('invalid');
-          allValid = false;
-          if (!firstInvalid) firstInvalid = field;
-        } else {
-          group.classList.remove('invalid');
-        }
-      });
+if (!valid) {
+group.classList.add('invalid');
+allValid = false;
+if (!firstInvalid) firstInvalid = field;
+} else {
+group.classList.remove('invalid');
+}
+});
 
-      if (!allValid && firstInvalid) {
-        firstInvalid.focus();
-      }
+if (!allValid && firstInvalid) {
+firstInvalid.focus();
+}
 
-      return allValid;
-    }
+return allValid;
+}
 
-    function nextStep(current) {
-      if (!validateStep(current)) {
-        return;
-      }
-      showStep(current + 1);
-    }
+function nextStep(current) {
+if (!validateStep(current)) {
+return;
+}
+showStep(current + 1);
+}
 
-    function prevStep(current) {
-      showStep(current - 1);
-    }
+function prevStep(current) {
+showStep(current - 1);
+}
 
-    document.getElementById('multiStepForm').addEventListener('submit', function (e) {
-      if (!validateStep(4)) {
-        e.preventDefault();
-      }
-    });
-  </script>
+document.getElementById('multiStepForm').addEventListener('submit', function (e) {
+if (!validateStep(4)) {
+e.preventDefault();
+}
+});
+</script>
 
 </body>
 </html>
