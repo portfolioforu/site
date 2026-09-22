@@ -142,6 +142,7 @@
         <div class="order-card" style="margin-bottom: 40px;">
           <h3 style="margin-bottom: 16px;">Laisser un avis</h3>
           <form id="reviewForm">
+            <input type="text" id="reviewWebsite" name="website" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="form-group">
               <label>Ton prénom *</label>
               <input type="text" id="reviewName" required maxlength="80" placeholder="Ex: Alex" />
@@ -158,7 +159,7 @@
             </div>
             <div class="form-group">
               <label>Ton commentaire *</label>
-              <textarea id="reviewComment" rows="3" required maxlength="1000" placeholder="Qu'as-tu pensé de ton portfolio et de l'accompagnement ?"></textarea>
+              <textarea id="reviewComment" rows="3" required minlength="15" maxlength="1000" placeholder="Qu'as-tu pensé de ton portfolio et de l'accompagnement ?"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" id="reviewSubmitBtn">Publier mon avis</button>
             <p class="form-msg" id="reviewMsg"></p>
@@ -280,20 +281,50 @@
       }
     }
 
+    const REVIEW_COOLDOWN_MS = 10 * 60 * 1000;
+
     document.getElementById('reviewForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const nom = document.getElementById('reviewName').value.trim();
       const commentaire = document.getElementById('reviewComment').value.trim();
+      const honeypot = document.getElementById('reviewWebsite').value.trim();
       const msg = document.getElementById('reviewMsg');
       const btn = document.getElementById('reviewSubmitBtn');
 
       msg.className = 'form-msg';
       msg.textContent = '';
 
+      // Honeypot rempli = très probablement un bot : on affiche un faux succès sans rien envoyer.
+      if (honeypot) {
+        msg.className = 'form-msg success';
+        msg.textContent = 'Merci pour ton avis !';
+        document.getElementById('reviewForm').reset();
+        selectedRating = 0;
+        updateStars();
+        return;
+      }
+
       if (!nom || !commentaire || selectedRating < 1) {
         msg.className = 'form-msg error';
         msg.textContent = 'Merci de renseigner ton prénom, une note et un commentaire.';
         return;
+      }
+
+      if (commentaire.length < 15) {
+        msg.className = 'form-msg error';
+        msg.textContent = 'Ton commentaire est un peu court — quelques mots de plus nous aideraient à comprendre ton retour.';
+        return;
+      }
+
+      try {
+        const lastSubmit = parseInt(localStorage.getItem('pfu_avis_last_submit') || '0', 10);
+        if (Date.now() - lastSubmit < REVIEW_COOLDOWN_MS) {
+          msg.className = 'form-msg error';
+          msg.textContent = 'Tu as déjà publié un avis récemment depuis cet appareil — merci de patienter quelques minutes.';
+          return;
+        }
+      } catch (err) {
+        // localStorage indisponible (navigation privée, etc.) : on laisse passer, ce n'est qu'un garde-fou léger.
       }
 
       btn.disabled = true;
@@ -312,6 +343,12 @@
         });
 
         if (!res.ok) throw new Error('Erreur lors de la publication');
+
+        try {
+          localStorage.setItem('pfu_avis_last_submit', String(Date.now()));
+        } catch (err) {
+          // localStorage indisponible : pas grave, ce n'est qu'un garde-fou léger.
+        }
 
         msg.className = 'form-msg success';
         msg.textContent = 'Merci pour ton avis !';

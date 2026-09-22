@@ -243,10 +243,11 @@ Remplis le formulaire en 4 étapes. Je te fais un aperçu gratuit avant tout pai
 <div class="form-step" id="step-4">
 <div class="step-title"><span>04.</span> Fichiers &amp; Préférences</div>
 
-<div class="form-group" data-required="file">
-<label>Ton CV actuel (PDF / Word) *</label>
-<input type="file" name="attachment" id="attachment" accept=".pdf,.doc,.docx" required />
-<span class="field-error">Merci de joindre ton CV.</span>
+<div class="form-group">
+<label>Ton CV actuel (PDF / Word) — si tu en as un</label>
+<input type="file" name="attachment" id="attachment" accept=".pdf,.doc,.docx" />
+<span style="font-size: 0.78rem; color: var(--text-dim); display: block; margin-top: 4px;">Facultatif : utile si tu en as un, mais pas obligatoire — tu peux tout décrire directement dans le formulaire. Format PDF ou Word, 10 Mo maximum.</span>
+<span class="field-error" id="attachmentError">Ce fichier dépasse 10 Mo — retire-le ou joins une version plus légère, sinon écris-moi directement après ta commande.</span>
 </div>
 
 <div class="form-group" data-required="text">
@@ -377,9 +378,27 @@ function prevStep(current) {
 showStep(current - 1);
 }
 
+const MAX_ATTACHMENT_SIZE = 10 * 1024 * 1024;
+
+function validateAttachmentSize() {
+const field = document.getElementById('attachment');
+const group = field.closest('.form-group');
+if (field.files && field.files.length > 0 && field.files[0].size > MAX_ATTACHMENT_SIZE) {
+group.classList.add('invalid');
+return false;
+}
+group.classList.remove('invalid');
+return true;
+}
+
+document.getElementById('attachment').addEventListener('change', validateAttachmentSize);
+
 document.getElementById('multiStepForm').addEventListener('submit', function (e) {
-if (!validateStep(4)) {
+if (!validateStep(4) || !validateAttachmentSize()) {
 e.preventDefault();
+if (!validateAttachmentSize()) {
+document.getElementById('attachment').focus();
+}
 }
 });
 </script>
