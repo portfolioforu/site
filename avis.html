@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=7" />
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
@@ -133,14 +133,21 @@
     </section>
 
     <section class="block" style="padding-top: 0;">
-      <div class="block-inner" style="max-width: 760px;">
+      <div class="block-inner with-aside">
 
-        <div class="disclaimer-box">
-          Tous les avis affichés ici sont publiés librement par nos clients, sans modération de contenu ni sélection. Nous ne créons ni n'achetons jamais de faux avis.
+        <div>
+          <div class="rating-summary" id="ratingSummary" hidden></div>
+          <div class="disclaimer-box">
+            Tous les avis affichés ici sont publiés librement par nos clients, sans modération de contenu ni sélection. Nous ne créons ni n'achetons jamais de faux avis.
+          </div>
+          <h2 style="font-size: 1.6rem; margin-bottom: 16px;">Tous les avis</h2>
+          <div id="reviewsList">
+            <p class="empty-state">Chargement des avis...</p>
+          </div>
         </div>
 
-        <div class="order-card" style="margin-bottom: 40px;">
-          <h3 style="margin-bottom: 16px;">Laisser un avis</h3>
+        <aside class="side-card">
+          <h2>Laisser un avis</h2>
           <form id="reviewForm">
             <input type="text" id="reviewWebsite" name="website" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="form-group">
@@ -164,12 +171,7 @@
             <button type="submit" class="btn btn-primary" id="reviewSubmitBtn">Publier mon avis</button>
             <p class="form-msg" id="reviewMsg"></p>
           </form>
-        </div>
-
-        <h3 style="margin-bottom: 16px;">Tous les avis</h3>
-        <div id="reviewsList">
-          <p class="empty-state">Chargement des avis...</p>
-        </div>
+        </aside>
 
       </div>
     </section>
@@ -265,6 +267,12 @@
           list.innerHTML = '<p class="empty-state">Aucun avis pour le moment. Sois le premier à en laisser un !</p>';
           return;
         }
+
+        const notes = data.map(a => Number(a.note) || 0);
+        const avg = notes.reduce((s, n) => s + n, 0) / notes.length;
+        const summary = document.getElementById('ratingSummary');
+        summary.innerHTML = `<strong>${avg.toFixed(1).replace('.', ',')}</strong><span aria-hidden="true">${'★'.repeat(Math.round(avg))}${'☆'.repeat(5 - Math.round(avg))}</span><small>sur 5, ${data.length} avis</small>`;
+        summary.hidden = false;
 
         list.innerHTML = data.map(avis => `
           <div class="review-card">

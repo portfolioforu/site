@@ -45,32 +45,3 @@ if (stack && finePointer && !reduceMotion) {
     stack.style.setProperty('--tilt-y', '0deg');
   });
 }
-
-const reviewsSection = document.getElementById('reviewsHome');
-if (reviewsSection) {
-  const SUPABASE_URL = 'https://nrzaakdjghgtptuclpdi.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_4Pi83zAwUj714AfVb91Kvw_R2I9mRbS';
-  const escapeHtml = str => {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
-  };
-  fetch(`${SUPABASE_URL}/rest/v1/avis?select=nom,note,commentaire,created_at&order=created_at.desc&limit=3`, {
-    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
-  })
-    .then(res => (res.ok ? res.json() : []))
-    .then(data => {
-      if (!data.length) return;
-      document.getElementById('reviewsHomeList').innerHTML = data.map(avis => {
-        const note = Math.max(0, Math.min(5, Number(avis.note) || 0));
-        return `
-        <figure class="home-review">
-          <span class="home-review-stars" aria-label="${note} sur 5">${'★'.repeat(note)}${'☆'.repeat(5 - note)}</span>
-          <blockquote>${escapeHtml(avis.commentaire)}</blockquote>
-          <figcaption>${escapeHtml(avis.nom)}</figcaption>
-        </figure>`;
-      }).join('');
-      reviewsSection.hidden = false;
-    })
-    .catch(() => {});
-}
