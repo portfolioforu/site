@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3" />
+<link rel="stylesheet" href="style.css?v=4" />
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
@@ -123,6 +123,36 @@
 </div>
 </section>
 
+<section class="block explore-section">
+<div class="block-inner">
+<div class="block-head">
+<h2>Fais défiler les vrais sites</h2>
+<p>Survole une démo (ou fais-la défiler au doigt) pour la parcourir de haut en bas. Un clic l'ouvre en entier.</p>
+</div>
+<div class="explore">
+<a class="explore-item" href="https://lea.portfolio-for-u.fr/" target="_blank" rel="noopener">
+<span class="explore-bar">lea.portfolio-for-u.fr</span>
+<span class="explore-frame"><img src="img/full-lea.jpg" alt="Page complète du portfolio de Léa Moreau" width="768" height="1063" loading="lazy" /></span>
+<span class="explore-caption"><b>Léa Moreau</b> Marketing</span>
+</a>
+<a class="explore-item" href="https://margaux.portfolio-for-u.fr/" target="_blank" rel="noopener">
+<span class="explore-bar">margaux.portfolio-for-u.fr</span>
+<span class="explore-frame"><img src="img/full-margaux.jpg" alt="Page complète du portfolio de Margaux Vidal" width="768" height="1782" loading="lazy" /></span>
+<span class="explore-caption"><b>Margaux Vidal</b> Cheffe de cuisine</span>
+</a>
+<a class="explore-item" href="https://sacha.portfolio-for-u.fr/" target="_blank" rel="noopener">
+<span class="explore-bar">sacha.portfolio-for-u.fr</span>
+<span class="explore-frame"><img src="img/full-sacha.jpg" alt="Page complète du portfolio de Sacha Lenoir" width="768" height="3120" loading="lazy" /></span>
+<span class="explore-caption"><b>Sacha Lenoir</b> Photographe</span>
+</a>
+<a class="explore-item" href="https://ncattin.github.io/my-portfolio/" target="_blank" rel="noopener">
+<span class="explore-bar">ncattin.github.io</span>
+<span class="explore-frame"><img src="img/full-nathan.jpg" alt="Page d'accueil du portfolio de Nathan Cattin" width="768" height="531" loading="lazy" /></span>
+<span class="explore-caption"><b>Nathan Cattin</b> BTS SIO</span>
+</a>
+</div>
+</div>
+</section>
 <section class="block">
 <div class="block-inner">
 <div class="block-head">
@@ -192,6 +222,55 @@
 </div>
 </section>
 
+<section class="block reviews-home" id="reviewsHome" hidden>
+<div class="block-inner">
+<div class="block-head">
+<h2>Ce qu'en disent les clients</h2>
+<p>Les derniers avis publiés, sans tri ni modération.</p>
+</div>
+<div class="reviews-grid" id="reviewsHomeList"></div>
+<p class="section-link"><a href="avis.html">Lire tous les avis</a></p>
+</div>
+</section>
+
+<section class="block tinted">
+<div class="block-inner maker">
+<div class="maker-avatar" aria-hidden="true">NC</div>
+<div>
+<h2>Derrière chaque site, une seule personne</h2>
+<p>Je m'appelle Nathan, je suis étudiant en BTS SIO. J'ai créé Portfolio For U après avoir construit mon propre portfolio pour ma recherche d'alternance, et vu à quel point un site bien pensé change le regard d'un recruteur.</p>
+<p>C'est moi qui lis ton formulaire, qui code ton site et qui réponds à tes messages.</p>
+<p class="section-link"><a href="apropos.html">En savoir plus sur moi</a></p>
+</div>
+</div>
+</section>
+
+<section class="block">
+<div class="block-inner faq-home">
+<div class="block-head">
+<h2>Les questions qu'on me pose le plus</h2>
+<p>La réponse à ta question n'est pas ici ? <a href="faq.html">Toute la FAQ</a> ou <a href="mailto:hello.portfolioforu@outlook.com">écris-moi</a>.</p>
+</div>
+<div class="faq-list">
+<details class="faq-item">
+<summary>Que se passe-t-il si l'aperçu ne me plaît pas ?</summary>
+<p>Les révisions sont incluses et illimitées jusqu'à ce que le rendu te convienne. Tu ne payes qu'une fois l'aperçu validé, jamais avant.</p>
+</details>
+<details class="faq-item">
+<summary>Je dois fournir un design, ou juste mon contenu ?</summary>
+<p>Ton contenu suffit : parcours, projets, et tes préférences de couleurs si tu en as. Je m'occupe de toute la mise en forme.</p>
+</details>
+<details class="faq-item">
+<summary>Le site s'affiche-t-il bien sur mobile ?</summary>
+<p>Oui, chaque portfolio est conçu pour ordinateur, tablette et téléphone.</p>
+</details>
+<details class="faq-item">
+<summary>Quelle différence entre Fichiers seuls et Clé en main ?</summary>
+<p>Avec Fichiers seuls, tu reçois une archive ZIP à héberger toi-même. Avec Clé en main, je publie ton portfolio sur un sous-domaine comme tonprenom.portfolio-for-u.fr, sans rien à configurer.</p>
+</details>
+</div>
+</div>
+</section>
 <section class="block closing">
 <div class="block-inner">
 <h2>Ton aperçu est gratuit. Lance-toi.</h2>
@@ -236,5 +315,6 @@
 </div>
 </footer>
 
+<script src="main.js?v=1" defer></script>
 </body>
 </html>
