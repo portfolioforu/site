@@ -801,7 +801,10 @@ font-family: var(--font-body);
 }
 
 .form-group textarea {
-resize: vertical;
+resize: none;
+overflow-y: auto;
+max-height: 320px;
+transition: height 0.1s ease;
 }
 
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {

@@ -1,5 +1,25 @@
 document.documentElement.classList.add('js');
 
+function autoGrow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+document.querySelectorAll('.form-group textarea').forEach(el => {
+  el.addEventListener('input', () => autoGrow(el));
+});
+const growVisible = () => document.querySelectorAll('.form-group textarea:not([style*="display: none"])').forEach(el => {
+  if (el.offsetParent !== null) autoGrow(el);
+});
+if (typeof window.showStep === 'function') {
+  const originalShowStep = window.showStep;
+  window.showStep = function (step) {
+    originalShowStep(step);
+    growVisible();
+  };
+} else {
+  growVisible();
+}
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
