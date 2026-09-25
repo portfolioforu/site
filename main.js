@@ -38,19 +38,6 @@ if (process) {
   }
 }
 
-function setupExploreItem(item) {
-  const frame = item.querySelector('.explore-frame');
-  const img = frame.querySelector('img');
-  const measure = () => {
-    const distance = Math.max(0, img.offsetHeight - frame.clientHeight);
-    item.style.setProperty('--shift', `-${distance}px`);
-    item.style.setProperty('--dur', `${Math.max(1.5, distance / 260)}s`);
-  };
-  if (img.complete) measure(); else img.addEventListener('load', measure, { once: true });
-  window.addEventListener('resize', measure);
-}
-document.querySelectorAll('.explore-item').forEach(setupExploreItem);
-
 const stack = document.querySelector('.stack');
 if (stack && finePointer && !reduceMotion) {
   stack.addEventListener('pointermove', e => {

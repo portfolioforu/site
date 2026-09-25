@@ -450,11 +450,7 @@ height: auto;
 min-height: 100%;
 object-fit: cover;
 object-position: top;
-transition: transform var(--dur, 4s) cubic-bezier(.45, 0, .55, 1);
 }
-
-.explore-item:hover .explore-frame img,
-.explore-item:focus-visible .explore-frame img { transform: translateY(var(--shift, 0)); }
 
 .explore-caption {
 display: block;
@@ -464,10 +460,6 @@ color: var(--text-dim);
 }
 
 .explore-caption b { color: var(--text); font-weight: 600; margin-right: 4px; }
-
-@media (hover: none) {
-.explore-frame { overflow-y: auto; }
-}
 
 .section-link { margin-top: 28px; }
 
